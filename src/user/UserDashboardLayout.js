@@ -7,6 +7,7 @@ import Ticker from '../core/Ticker';
 
 
 
+
 const UserDashBoardLayout = ({history}) => {
 
     const {user: {_id, name, email, role}} = isAuthenticated()
@@ -33,8 +34,18 @@ const UserDashBoardLayout = ({history}) => {
         </ul>
     </li>
     <li><Link to="/user/inbox" className="waves-effect"><i className="fa fa-inbox mr-2 text-aqua"></i> <span>Inbox</span></Link></li>
-    <li><Link to="/user/securities" className="waves-effect"><i className="fa fa-inbox mr-2 text-aqua"></i> <span>Securities</span></Link></li>
 
+    <li>
+        <Link  to="/user/securities"  className="waves-effect"> 
+            <i className="icon-home"></i> <span>Securities</span> <i className="fa fa-angle-left pull-right"></i>
+        </Link>
+        <ul className="sidebar-submenu">
+        <li><Link to="/user/securities"><i className="fa fa-circle-o"></i> Securities </Link></li>
+          <li><Link to="/user/securities/performance"><i className="fa fa-circle-o"></i> Securities Performace</Link></li>
+        </ul>
+    </li>
+    
+   
 
     <li className="sidebar-header">LABELS</li>
       

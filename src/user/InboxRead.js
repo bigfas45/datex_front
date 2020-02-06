@@ -228,7 +228,7 @@ const InboxRead = ({match}) => {
                                                         </Workbook>       
                                                      </div>
 
-                                                     {pdf()}
+                                                    
                                                         
                                                       
                                                      

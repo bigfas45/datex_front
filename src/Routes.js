@@ -11,6 +11,8 @@ import Inbox from './user/Inbox';
 import InboxRead from './user/InboxRead';
 import Security from './user/Securities';
 import SecurityPerformance from './user/SecurityPerformance';
+import Equity from './user/Equity';
+
 
 
 
@@ -32,6 +34,7 @@ const Routes = () => {
                 <PrivateRoute path="/user/inboxRead/:date" exact component={InboxRead} />
                 <PrivateRoute path="/user/securities" exact component={Security} />
                  <PrivateRoute path="/user/securities/performance" exact component={SecurityPerformance} />
+                 <PrivateRoute path="/user/equity" exact component={Equity} />
                 <AdminRoute path="/admin/dashboard" exact component={AdminDashboard} />
             </Switch>
         </BrowserRouter>

@@ -249,6 +249,38 @@ export const performanceEnd = end => {
     .catch(err => console.log(err));
 }
 
+export const performanceStartSecurity = startSecurity => {
+    return fetch (`${API}/security/performanceStartSecurity/${startSecurity}`, {
+        method: "GET"
+    })
+    .then(response => {
+        return response.json();
+    })
+    .catch(err => console.log(err));
+}
+
+export const performanceEndSecurity = (startSecurity, endSecurity) => {
+    return fetch (`${API}/security/performanceEndSecurity/${startSecurity}/${endSecurity}`, {
+        method: "GET"
+    })
+    .then(response => {
+        return response.json();
+    })
+    .catch(err => console.log(err));
+}
+
+
+export const dataTableTest = () => {
+    return fetch (`${API}/ticker`, {
+        method: "GET"
+    })
+    .then(response => {
+        return response.json();
+    })
+    .catch(err => console.log(err));
+}
+
+
 
 
 
