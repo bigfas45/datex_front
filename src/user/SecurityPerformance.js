@@ -283,7 +283,7 @@ const Routes = () => {
     
         <Fragment>
         <Dashboard></Dashboard>
-        <Dashboard></Dashboard>
+     
        <div className="content-wrapper">
            <div className="container-fluid">
                <Ticker></Ticker>

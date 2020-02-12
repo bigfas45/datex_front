@@ -1,277 +1,299 @@
 import { API } from "../config";
-import queryString from 'query-string'
-
-
+import queryString from "query-string";
 
 export const ticker = () => {
-    return fetch (`${API}/ticker`, {
-        method: "GET",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",          
-        },
-    })
+  return fetch(`${API}/ticker`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    }
+  })
     .then(response => {
-        return response.json();
+      return response.json();
     })
     .catch(error => console.log(error));
 };
 
-
 export const MarketIndexT = () => {
-    return fetch (`${API}/MarketIndexT`, {
-        method: "GET",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-         
-          
-        },
-    })
+  return fetch(`${API}/MarketIndexT`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    }
+  })
     .then(response => {
-        return response.json();
+      return response.json();
     })
     .catch(err => console.log(err));
 };
 
 export const MarketIndexY = () => {
-    return fetch (`${API}/MarketIndexY`, {
-        method: "GET",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-         
-          
-        },
-    })
+  return fetch(`${API}/MarketIndexY`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    }
+  })
     .then(response => {
-        return response.json();
+      return response.json();
     })
     .catch(err => console.log(err));
 };
 
-
 export const LiveTrade = () => {
-    return fetch (`${API}/liveTrade`, {
-        method: "GET",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-    })
+  return fetch(`${API}/liveTrade`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    }
+  })
     .then(response => {
-        return response.json();
+      return response.json();
     })
     .catch(err => console.log(err));
 };
 
 export const ParticipantsLogin = () => {
-    return fetch (`${API}/participantsLogin`, {
-        method: "GET",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-    })
+  return fetch(`${API}/participantsLogin`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    }
+  })
     .then(response => {
-        return response.json();
+      return response.json();
     })
     .catch(err => console.log(err));
 };
-
 
 export const Usi = () => {
-    return fetch (`${API}/usi`, {
-        method: "GET",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-    })
+  return fetch(`${API}/usi`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    }
+  })
     .then(response => {
-        return response.json();
+      return response.json();
     })
     .catch(err => console.log(err));
 };
-
 
 export const Live = () => {
-    return fetch (`${API}/live`, {
-        method: "GET",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-    })
+  return fetch(`${API}/live`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    }
+  })
     .then(response => {
-        return response.json();
+      return response.json();
     })
     .catch(err => console.log(err));
 };
 
-
-export const getVwap = (secerityCode) => {
-    return fetch (`${API}/vwap/${secerityCode}`, {
-        method: "GET"
-    })
+export const getVwap = secerityCode => {
+  return fetch(`${API}/vwap/${secerityCode}`, {
+    method: "GET"
+  })
     .then(response => {
-        return response.json();
+      return response.json();
     })
     .catch(err => console.log(err));
 };
-
 
 export const InboxD = () => {
-    return fetch (`${API}/inboxDate`, {
-        method: "GET",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-    })
+  return fetch(`${API}/inboxDate`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    }
+  })
     .then(response => {
-        return response.json();
+      return response.json();
     })
     .catch(err => console.log(err));
 };
 
-
-
-export const getInbox = (date) => {
-    return fetch (`${API}/getInbox/${date}`, {
-        method: "GET"
-    })
+export const getInbox = date => {
+  return fetch(`${API}/getInbox/${date}`, {
+    method: "GET"
+  })
     .then(response => {
-        return response.json();
+      return response.json();
     })
     .catch(err => console.log(err));
-}
+};
 
-
-
-export const getTradeReports = (date) => {
-    return fetch (`${API}/getInboxTradeReport/${date}`, {
-        method: "GET"
-    })
+export const getTradeReports = date => {
+  return fetch(`${API}/getInboxTradeReport/${date}`, {
+    method: "GET"
+  })
     .then(response => {
-        return response.json();
+      return response.json();
     })
     .catch(err => console.log(err));
-}
-
+};
 
 export const getSymbols = () => {
-    return fetch (`${API}/security/symbol`, {
-        method: "GET"
-    })
+  return fetch(`${API}/security/symbol`, {
+    method: "GET"
+  })
     .then(response => {
-        return response.json();
+      return response.json();
     })
     .catch(err => console.log(err));
-}
-
+};
 
 export const list = data => {
-    // const query = queryString.stringify(params)
-    // console.log(data)
-    return fetch (`${API}/security/${data}`, {
-        method: "GET"
-    })
+  // const query = queryString.stringify(params)
+  // console.log(data)
+  return fetch(`${API}/security/${data}`, {
+    method: "GET"
+  })
     .then(response => {
-        return response.json();
+      return response.json();
     })
     .catch(err => console.log(err));
-}
-
+};
 
 export const chartList = data2 => {
-    // console.log(data2)
-    return fetch (`${API}/security/chart/${data2}`, {
-        method: "GET"
-    })
+  // console.log(data2)
+  return fetch(`${API}/security/chart/${data2}`, {
+    method: "GET"
+  })
     .then(response => {
-        return response.json();
+      return response.json();
     })
     .catch(err => console.log(err));
-}
+};
 
 export const securityMcap = dataMcapS => {
-    console.log(dataMcapS)
-    return fetch (`${API}/security/mcap/${dataMcapS}`, {
-        method: "GET"
-    })
+  console.log(dataMcapS);
+  return fetch(`${API}/security/mcap/${dataMcapS}`, {
+    method: "GET"
+  })
     .then(response => {
-        return response.json();
+      return response.json();
     })
     .catch(err => console.log(err));
-}
+};
 
 export const securityTtrade = dataTtrades => {
-    console.log(dataTtrades)
-    return fetch (`${API}/security/totalTrade/${dataTtrades}`, {
-        method: "GET"
-    })
+  console.log(dataTtrades);
+  return fetch(`${API}/security/totalTrade/${dataTtrades}`, {
+    method: "GET"
+  })
     .then(response => {
-        return response.json();
+      return response.json();
     })
     .catch(err => console.log(err));
-}
+};
 
 export const securityTvolume = dataTvolume => {
-    console.log(dataTvolume)
-    return fetch (`${API}/security/totalDeals/${dataTvolume}`, {
-        method: "GET"
-    })
+  console.log(dataTvolume);
+  return fetch(`${API}/security/totalDeals/${dataTvolume}`, {
+    method: "GET"
+  })
     .then(response => {
-        return response.json();
+      return response.json();
     })
     .catch(err => console.log(err));
-}
-
+};
 
 export const performanceStart = start => {
-    return fetch (`${API}/security/performanceStart/${start}`, {
-        method: "GET"
-    })
+  return fetch(`${API}/security/performanceStart/${start}`, {
+    method: "GET"
+  })
     .then(response => {
-        return response.json();
+      return response.json();
     })
     .catch(err => console.log(err));
-}
+};
 
 export const performanceEnd = end => {
-    return fetch (`${API}/security/performanceEnd/${end}`, {
-        method: "GET"
-    })
+  return fetch(`${API}/security/performanceEnd/${end}`, {
+    method: "GET"
+  })
     .then(response => {
-        return response.json();
+      return response.json();
     })
     .catch(err => console.log(err));
-}
+};
 
 export const performanceStartSecurity = startSecurity => {
-    return fetch (`${API}/security/performanceStartSecurity/${startSecurity}`, {
-        method: "GET"
-    })
+  return fetch(`${API}/security/performanceStartSecurity/${startSecurity}`, {
+    method: "GET"
+  })
     .then(response => {
-        return response.json();
+      return response.json();
     })
     .catch(err => console.log(err));
-}
+};
 
 export const performanceEndSecurity = (startSecurity, endSecurity) => {
-    return fetch (`${API}/security/performanceEndSecurity/${startSecurity}/${endSecurity}`, {
-        method: "GET"
-    })
+  return fetch(
+    `${API}/security/performanceEndSecurity/${startSecurity}/${endSecurity}`,
+    {
+      method: "GET"
+    }
+  )
     .then(response => {
-        return response.json();
+      return response.json();
     })
     .catch(err => console.log(err));
-}
-
+};
 
 export const dataTableTest = () => {
-    return fetch (`${API}/ticker`, {
+  return fetch(`${API}/ticker`, {
+    method: "GET"
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+export const equity = () => {
+  return fetch(`${API}/equity`, {
+    method: "GET"
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+export const priceList = () => {
+  return fetch(`${API}/equity/priceList`, {
+    method: "GET"
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+export const yearTrade = () => {
+  return fetch(`${API}/equity/year`, {
+    method: "GET"
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+export const summaryMonthly = (start, end) => {
+    return fetch (`${API}/equity/monthly/${start}/${end}`, {
         method: "GET"
     })
     .then(response => {
@@ -280,6 +302,80 @@ export const dataTableTest = () => {
     .catch(err => console.log(err));
 }
 
+
+export const TSumYearTrade = (start, end) => {
+  return fetch (`${API}/equity/year/${start}/${end}`, {
+      method: "GET"
+  })
+  .then(response => {
+      return response.json();
+  })
+  .catch(err => console.log(err));
+}
+
+export const brokers = () => {
+  return fetch (`${API}/brokers`, {
+      method: "GET"
+  })
+  .then(response => {
+      return response.json();
+  })
+  .catch(err => console.log(err));
+}
+
+
+export const brokers2 = () => {
+  return fetch (`${API}/brokers2`, {
+      method: "GET"
+  })
+  .then(response => {
+      return response.json();
+  })
+  .catch(err => console.log(err));
+}
+
+
+export const topbrokers = (start, end) => {
+  return fetch (`${API}/brokers/TopTen/${start}/${end}`, {
+      method: "GET"
+  })
+  .then(response => {
+      return response.json();
+  })
+  .catch(err => console.log(err));
+}
+
+
+export const brokersBuyTrades = (code) => {
+  return fetch (`${API}/brokers/Trades/${code}`, {
+      method: "GET"
+  })
+  .then(response => {
+      return response.json();
+  })
+  .catch(err => console.log(err));
+}
+
+export const brokersSellTrades = (code) => {
+  return fetch (`${API}/brokers/Trades/sell/${code}`, {
+      method: "GET"
+  })
+  .then(response => {
+      return response.json();
+  })
+  .catch(err => console.log(err));
+}
+
+
+export const brokerTradeLog = (code) => {
+  return fetch (`${API}/brokers/Trades/daily/${code}`, {
+      method: "GET"
+  })
+  .then(response => {
+      return response.json();
+  })
+  .catch(err => console.log(err));
+}
 
 
 

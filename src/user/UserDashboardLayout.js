@@ -29,9 +29,7 @@ const UserDashBoardLayout = ({history}) => {
         <Link to="/user/dashboard" className="waves-effect"> 
             <i className="icon-home"></i> <span>Dashboard</span> <i className="fa fa-angle-left pull-right"></i>
         </Link>
-        <ul className="sidebar-submenu">
-          <li><Link to="#"><i className="fa fa-circle-o"></i> Dashboard v1</Link></li>
-        </ul>
+        
     </li>
     <li><Link to="/user/inbox" className="waves-effect"><i className="fa fa-inbox mr-2 text-aqua"></i> <span>Inbox</span></Link></li>
 
@@ -39,17 +37,31 @@ const UserDashBoardLayout = ({history}) => {
         <Link  to="/user/securities"  className="waves-effect"> 
             <i className="icon-home"></i> <span>Securities</span> <i className="fa fa-angle-left pull-right"></i>
         </Link>
-        <ul className="sidebar-submenu">
-        <li><Link to="/user/securities"><i className="fa fa-circle-o"></i> Securities </Link></li>
-          <li><Link to="/user/securities/performance"><i className="fa fa-circle-o"></i> Securities Performace</Link></li>
-        </ul>
+        
+    </li>
+    <li><Link to="/user/securities/performance" className="waves-effect"><i className="fa fa-inbox mr-2 text-aqua"></i> <span>Securities Performace</span></Link></li>
+
+    <li>
+        <Link  to="/user/equity"  className="waves-effect"> 
+            <i className="icon-home"></i> <span>Equity Report</span> <i className="fa fa-angle-left pull-right"></i>
+        </Link>
+       
+    </li>
+    <li><Link to="/user/equity/priceList" className="waves-effect"><i className="fa fa-inbox mr-2 text-aqua"></i> <span>Official Price List</span></Link></li>
+    <li><Link to="/user/equity/monthly" className="waves-effect"><i className="fa fa-inbox mr-2 text-aqua"></i> <span>Monthly Summary</span></Link></li>
+
+    <li>
+        <Link  to="/user/brokers"  className="waves-effect"> 
+            <i className="icon-home"></i> <span>Brokers</span> <i className="fa fa-angle-left pull-right"></i>
+        </Link>
+       
     </li>
     
    
 
     <li className="sidebar-header">LABELS</li>
       
-      <li><Link to="#" className="waves-effect"><i className="fa fa-circle-o text-aqua"></i> <span>Information</span></Link></li>
+      <li><Link to="/user/equity/monthly" className="waves-effect"><i className="fa fa-circle-o text-aqua"></i> <span>Information</span></Link></li>
  </ul>
  </div>
  {/* <!--End sidebar-wrapper--> */}

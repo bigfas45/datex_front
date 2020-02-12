@@ -1,10 +1,11 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState, Component } from "react";
 import { Link } from "react-router-dom";
 import Ticker from "../core/Ticker";
 import Dashboard from "./UserDashboardLayout";
-import {
-    list
-} from '../core/Apicore';
+import {equity} from '../core/Apicore';
+import ReactTable from 'react-table-6';
+import 'react-table-6/react-table.css';
+import ExportToExcel from "./ExportToExcelEquity";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -12,28 +13,28 @@ const Home = () => {
   const symbol = "SDCSCSPLC"
 
   const loadInboxDate = () => {
-    list(symbol).then(data => {
+    equity().then(data => {
         if (data.error) {
             setError(data.error)
         }else{
             setData(data)
+          
+
         }
     });
 };
 
-  
-  useEffect(() => {
 
-    loadInboxDate()
-  
-const script = document.createElement("script");
+useEffect(() => {
 
-script.src = `../js/content.js`;
-script.async = true;
-document.body.appendChild(script);
-  }, []);
+  loadInboxDate();
 
-  const table = () => {
+}, []);
+
+
+
+
+const table = () => {
     return (
     <Fragment>
     
@@ -63,58 +64,6 @@ document.body.appendChild(script);
      </div>
      </div>
    
-
-
-
-      <div className="row">
-        <div className="col-lg-12">
-          <div className="card">
-            <div className="card-header"><i className="fa fa-table"></i> Data Exporting</div>
-            <div className="card-body">
-              <div className="table-responsive">
-              <table id="example" className="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>id </th>
-                        <th>DATE</th>
-                        <th>SECURITY</th>
-                        <th>SYMBOL</th>
-                        <th>CLOSE_PRICE</th>
-                        <th>DEALS</th>
-                        <th>VOLUME</th>
-                        <th>VALUE</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        data.map(()=> {
-                            return(
-                                <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            )
-                        })
-                    }
-                 
-                 
-                </tbody>
-                <tfoot>
-              
-                </tfoot>
-            </table>
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       </Fragment>
    
   
@@ -124,15 +73,81 @@ document.body.appendChild(script);
     );
   };
 
+
+  const columns = [{
+    Header: 'id',
+    accessor: 'id' // String-based value accessors!
+  }, {
+    Header: 'DATE',
+    accessor: 'DATE' // String-based value accessors!
+  },
+  {
+    Header: 'SECURITY',
+    accessor: 'SECURITY' // String-based value accessors!
+  },
+
+  {
+    Header: 'SYMBOL',
+    accessor: 'SYMBOL' // String-based value accessors!
+  },
+  {
+    Header: 'CLOSE_PRICE',
+    accessor: 'CLOSE_PRICE' // String-based value accessors!
+  },
+  {
+    Header: 'DEALS',
+    accessor: 'DEALS' // String-based value accessors!
+  },
+  {
+    Header: 'VOLUME',
+    accessor: 'VOLUME' // String-based value accessors!
+  },
+  {
+    Header: 'VALUE',
+    accessor: 'VALUE' // String-based value accessors!
+  },]
+
+  
+  
+
+  
+
   return (
     <Fragment>
       <Dashboard></Dashboard>
-      <Ticker></Ticker>
+    
 
       <div className="content-wrapper">
         <div className="container-fluid">
+        <Ticker></Ticker>
+       {table()}
+       
+        <ReactTable
+    data={data}
+    columns={columns}
+    filterable
+    sortable
+    defaultPageSize={10}
+    showPaginationTop
+    showPaginationBottom={false}
     
-        {table()}
+  >
+
+    {(state, filtredData, instance) => {
+      const reactTable = state.pageRows.map(post => {return post._original});
+      return(
+        <div>
+          {filtredData()}
+          <ExportToExcel post={reactTable} />
+         
+        </div>
+      )
+    }}
+
+  </ReactTable>
+      
+  
+                        
         </div>
     
 
