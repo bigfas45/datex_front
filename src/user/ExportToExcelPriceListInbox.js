@@ -11,15 +11,15 @@ const ExportToExcelPriceList = ({post}) => {
     id="test-table-xls-button"
     className="export"
     table="table-to-xls"
-    filename="securityData"
+    filename="NASD-Daily-Price-List"
     sheet="tablexls"
-    buttonText="Export"
+    buttonText="Daily Price List"
 
     />
     <table hidden="true" id="table-to-xls">
-    <tr>
-                                                    <img style={{marginTop: "-2"}} src="https://nasdng.com/wp-content/uploads/2018/09/logo-17.png" height="30" className="App-logo mt5" alt="logo" />
-                                                    </tr>
+        <tr>
+            <img style={{marginTop: "-2"}} src="https://nasdng.com/wp-content/uploads/2018/09/logo-17.png" height="30" className="App-logo mt5" alt="logo" />
+        </tr>
         <thead>
             <tr>
                 <th>Date</th>
@@ -36,11 +36,11 @@ const ExportToExcelPriceList = ({post}) => {
                                                 return(
                                                     <tr key={i}>
                                                         <td> {r.Date} </td>
-                                                        <td> {r.Security}</td>
-                                                        <td> {r.RefPrice}</td>
-                                                        <td> {r.ClosePrice}</td>
-                                                        <td> {r.T52WeekHighPrice}</td>
-                                                        <td> {r.T52WeekLowPrice}</td>
+                                                        <td> {r.securityName}</td>
+                                                        <td> {r.open}</td>
+                                                        <td> {r.close}</td>
+                                                        <td> {r.I52WH}</td>
+                                                        <td> {r.I52WL}</td>
                                                      
                                                     </tr>
                                                 )

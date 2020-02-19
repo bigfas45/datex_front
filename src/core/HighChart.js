@@ -41,7 +41,7 @@ var strtotime = require('strtotime');
   
   
 
-var ohlc = [],
+var usi = [],
   volume = [],
   dataLength = data.length,
   groupingUnits = [
@@ -54,7 +54,7 @@ var ohlc = [],
   i = 0;
 
 for (i; i < dataLength; i += 1) {
-  ohlc.push([
+  usi.push([
     data[i][0], // the date
     data[i][1], // open
    
@@ -116,7 +116,7 @@ const options = {
     {
       type: "",
       name: "USI",
-      data:ohlc,
+      data:usi,
       dataGrouping: {
         units: groupingUnits
       }

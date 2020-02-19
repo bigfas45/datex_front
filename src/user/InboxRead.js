@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import {getInbox, getTradeReports} from '../core/Apicore';
 import Workbook from 'react-excel-workbook';
 import {isAuthenticated} from '../auth';
+import ExportToExcelPriceList from "./ExportToExcelPriceListInbox";
+import ExportToExcel from "./ExportToExcelTradeInbox";
 
 
 
@@ -190,42 +192,15 @@ const InboxRead = ({match}) => {
                                                     <p><b>Hi Sir...</b></p>
                                                     <p>Please download the attached file</p>
                                                     <hr/>
+                                             
                                                     <h4> <i class="fa fa-paperclip mr-2"></i> Attachments <span>(1)</span> </h4>
                                                     <div class="row">
-                                                        <div class="col-sm-4 col-md-3">
-                                                        <Workbook filename="NASD_DAILY_REPORT.xlsx" element={<img src="https://icon2.cleanpng.com/20180421/qye/kisspng-microsoft-excel-computer-icons-spreadsheet-compute-5adb659f36c410.3584293015243278392243.jpg" alt="attachment" class="img-thumbnail"/>}>
-                                                            <Workbook.Sheet data={values} name="OFFICIAL PRICE LIST">
-                                                                <Workbook.Column label="Security Name" value="Security Name"/>
-                                                                <Workbook.Column label="Security" value="Security"/>
-                                                                <Workbook.Column label="Open Price" value="Open Price"/>
-                                                                 <Workbook.Column label="Close Price" value="Close Price"/>
-                                                                 <Workbook.Column label="52 Week High Price" value="52 Week High Price"/>
-                                                                 <Workbook.Column label="52 Week Low Price" value="52 Week Low Price"/>
-                                                            </Workbook.Sheet>
-                                                            <Workbook.Sheet data={trades} name="TRADE REPORT">
-                                                                <Workbook.Column label="SECURITY" value="SECURITY"/>
-                                                                <Workbook.Column label="SYMBOL" value="SYMBOL"/>
-                                                                <Workbook.Column label="OPEN PRICE" value="refprice"/>
-                                                                <Workbook.Column label="CLOSE_PRICE" value="CLOSE_PRICE"/>
-                                                                <Workbook.Column label="High" value=""/>
-                                                                <Workbook.Column label="Low" value=""/>
-                                                                <Workbook.Column label="Spread" value=""/>
-                                                                <Workbook.Column label="CLOSE_PRICE" value="CLOSE_PRICE"/>
-                                                                <Workbook.Column label="Change" value={row => row.CLOSE_PRICE - row.refprice}/>
-                                                                <Workbook.Column label="" value={row => {if ((row.CLOSE_PRICE - row.refprice) === 0) {
-                                                                
-                                                                }
-                                                                
-                                                            }
-                                                            
-                                                                }/>
-                                                                <Workbook.Column label="%Change" value=""/>
-                                                                <Workbook.Column label="Trades" value="DEALS"/>
-                                                                <Workbook.Column label="VOLUME" value="VOLUME"/>
-                                                                <Workbook.Column label="VALUE" value="VALUE"/>
-                                                            </Workbook.Sheet>
-                                                            
-                                                        </Workbook>       
+                                                    <div class="col-sm-4 col-md-3">
+                                                        <ExportToExcelPriceList post={values} />
+                                                     </div>
+                                                      
+                                                     <div class="col-sm-4 col-md-3">
+                                                        <ExportToExcel post={trades} />
                                                      </div>
 
                                                     
