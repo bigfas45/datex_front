@@ -6,7 +6,7 @@ import Home from './core/Home';
 import PrivateRoute from './auth/PrivateRoute';
 import AdminRoute from './auth/AdminRoute';
 import Dashboard from './user/Dashbaord';
-import AdminDashboard from './user/AdminDashboardLayout';
+import AdminDashboard from './admin/AdminDashBoard';
 import Inbox from './user/Inbox';
 import InboxRead from './user/InboxRead';
 import Security from './user/Securities';
@@ -21,6 +21,19 @@ import TopBrokers from './user/TopBrokers';
 import BrokersBuyTrades from './user/BrokersBuyTrades';
 import BrokersSellTrades from './user/BrokersSellTrades';
 import BrokerTradeLog from './user/BrokerTradeLog';
+import SecurityCreation from './admin/SecurityCreation';
+import Annualreport from './admin/Annualreport';
+import AnnualreportUser from './user/AnnualReport';
+import ManageReport from './admin/ManageReport';
+import UpdateReport from './admin/UpdateReport';
+import Clients from './admin/Clients';
+import CreateClientUser from './admin/CreateClientUser';
+import ClientUserUpdate from './admin/ClientUserUpdate';
+import Corporate_action from './user/Corporate_action';
+import Bonds from './user/Bonds';
+
+
+
 
 
 
@@ -54,7 +67,18 @@ const Routes = () => {
                  <PrivateRoute path="/user/brokers/buy" exact component={BrokersBuyTrades} />
                  <PrivateRoute path="/user/brokers/sell" exact component={BrokersSellTrades} />
                  <PrivateRoute path="/user/brokers/tradelog" exact component={BrokerTradeLog} />
+                 <PrivateRoute path="/user/annualreports" exact component={AnnualreportUser} />
+                 <PrivateRoute path="/user/corporate" exact component={Corporate_action} />
+                 <PrivateRoute path="/user/bonds" exact component={Bonds} />
                 <AdminRoute path="/admin/dashboard" exact component={AdminDashboard} />
+                <AdminRoute path="/admin/security" exact component={SecurityCreation} />
+                <AdminRoute path="/admin/annualreport" exact component={Annualreport} />
+                <AdminRoute path="/admin/manage/annualreport" exact component={ManageReport} />
+                <AdminRoute path="/admin/annualreport/update/:reportId" exact component={UpdateReport} />
+                <AdminRoute path="/admin/manage/clients" exact component={Clients} />
+                <AdminRoute path="/admin/user/create" exact component={CreateClientUser} />
+                <AdminRoute path="/admin/user/update/:itemId" exact component={ClientUserUpdate} />
+
             </Switch>
         </BrowserRouter>
     );

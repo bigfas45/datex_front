@@ -74,7 +74,7 @@ const Menu = ({history}) => (
 
             {isAuthenticated() && isAuthenticated().user.role === 1 && (
                  <div className="col-xs-12 col-s-12  col-1">
-                 <Link className="nav-link" style={isActive(history, '/admin/dashboard')} to="/user/dashboard"><span className="badge badge-primary text-uppercase font-weight-bolder" style={{fontSize: "1rem"}}>ADMIN DASHBOARD <i class="icon-home"></i></span></Link>
+                 <Link className="nav-link" style={isActive(history, '/admin/dashboard')} to="/admin/dashboard"><span className="badge badge-primary text-uppercase font-weight-bolder" style={{fontSize: "1rem"}}>ADMIN <i class="icon-home"></i></span></Link>
             </div>
             )}
            

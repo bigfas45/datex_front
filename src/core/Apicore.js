@@ -378,5 +378,40 @@ export const brokerTradeLog = (code) => {
 }
 
 
+export const report = () => {
+  return fetch (`${API}/nasd/annualreport/`, {
+      method: "GET"
+  })
+  .then(response => {
+      return response.json();
+  })
+  .catch(err => console.log(err));
+}
+
+
+
+export const getCorporateAction = (code) => {
+  return fetch (`${API}/equity/corporate_action`, {
+      method: "GET"
+  })
+  .then(response => {
+      return response.json();
+  })
+  .catch(err => console.log(err));
+}
+
+
+export const getBonds = (code) => {
+  return fetch (`${API}/equity/bonds`, {
+      method: "GET"
+  })
+  .then(response => {
+      return response.json();
+  })
+  .catch(err => console.log(err));
+}
+
+
+
 
 

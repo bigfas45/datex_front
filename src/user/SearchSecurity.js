@@ -1,5 +1,5 @@
 import React, {Fragment, useState, useEffect, Component} from 'react';
-import {getSymbols, list} from '../core/Apicore';
+import {getSymbols, list} from '../../core/Apicore';
 
 
 

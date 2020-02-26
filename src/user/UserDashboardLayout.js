@@ -56,6 +56,26 @@ const UserDashBoardLayout = ({history}) => {
         </Link>
        
     </li>
+
+    <li>
+        <Link  to="/user/annualreports"  className="waves-effect"> 
+            <i className="icon-home"></i> <span>Reports</span> <i className="fa fa-angle-left pull-right"></i>
+        </Link>
+       
+    </li>
+
+    <li>
+        <Link  to="/user/corporate"  className="waves-effect"> 
+            <i className="icon-home"></i> <span>Corporate Action</span> <i className="fa fa-angle-left pull-right"></i>
+        </Link>
+       
+    </li>
+    <li>
+        <Link  to="/user/bonds"  className="waves-effect"> 
+            <i className="icon-home"></i> <span>Bonds</span> <i className="fa fa-angle-left pull-right"></i>
+        </Link>
+       
+    </li>
     
    
 
