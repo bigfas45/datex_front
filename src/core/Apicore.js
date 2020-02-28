@@ -133,8 +133,8 @@ export const getInbox = date => {
     .catch(err => console.log(err));
 };
 
-export const getTradeReports = date => {
-  return fetch(`${API}/getInboxTradeReport/${date}`, {
+export const getTradeReports = (date) => {
+  return fetch(`${API}/getInboxTradeReport/${date}/${date}`, {
     method: "GET"
   })
     .then(response => {

@@ -9,6 +9,7 @@ import Workbook from 'react-excel-workbook';
 import {isAuthenticated} from '../auth';
 import ExportToExcelPriceList from "./ExportToExcelPriceListInbox";
 import ExportToExcel from "./ExportToExcelTradeInbox";
+import ExportToExcelGainers from "./ExportToExcelGainers";
 
 
 
@@ -201,6 +202,10 @@ const InboxRead = ({match}) => {
                                                       
                                                      <div class="col-sm-4 col-md-3">
                                                         <ExportToExcel post={trades} />
+                                                     </div>
+
+                                                     <div class="col-sm-4 col-md-3">
+                                                        <ExportToExcelGainers post={trades} />
                                                      </div>
 
                                                     

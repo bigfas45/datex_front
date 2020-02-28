@@ -363,7 +363,7 @@ const securityWidget = () => {
     return(
         <Fragment>
              <div class="row">
-		  <div class="col-12 col-lg-4 col-xl-4">
+		  <div class="col-12 col-lg-4 col-xl-4" style={{height:"50px"}}>
 		    <div class="card bg-pattern-dark">
             <div class="card-body">
               <div class="media">
