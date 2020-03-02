@@ -411,6 +411,28 @@ export const getBonds = (code) => {
   .catch(err => console.log(err));
 }
 
+export const getBids = (symbol) => {
+  return fetch (`${API}/security/totalBids/${symbol}`, {
+      method: "GET"
+  })
+  .then(response => {
+      return response.json();
+  })
+  .catch(err => console.log(err));
+}
+
+export const getOffers = (symbol) => {
+  return fetch (`${API}/security/totalOffers/${symbol}`, {
+      method: "GET"
+  })
+  .then(response => {
+      return response.json();
+  })
+  .catch(err => console.log(err));
+}
+
+
+
 
 
 
