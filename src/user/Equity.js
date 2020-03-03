@@ -74,10 +74,7 @@ const table = () => {
   };
 
 
-  const columns = [{
-    Header: 'id',
-    accessor: 'id' // String-based value accessors!
-  }, {
+  const columns = [ {
     Header: 'DATE',
     accessor: 'DATE' // String-based value accessors!
   },

@@ -1,5 +1,7 @@
 import React, { Fragment, useEffect, useState, Component } from "react";
-import ReactHTMLTableToExcel from 'react-html-table-to-excel'
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import moment from "moment";
+
 
 const ExportToExcelPriceList = ({post}) => {
 
@@ -35,7 +37,7 @@ const ExportToExcelPriceList = ({post}) => {
                                             {post.map((r, i) => {
                                                 return(
                                                     <tr key={i}>
-                                                        <td> {r.Date} </td>
+                                                        <td> {moment.utc(r.Date).format('MM/DD/YYYY')} </td>
                                                         <td> {r.securityName}</td>
                                                         <td> {r.open}</td>
                                                         <td> {r.close}</td>

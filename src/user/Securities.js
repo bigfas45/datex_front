@@ -20,6 +20,7 @@ import ReactTable from "react-table-6";
 import "react-table-6/react-table.css";
 import ExportToExcel from "./ExportToExcel";
 import { Link } from "react-router-dom";
+import moment from "moment"
 
 var strtotime = require("strtotime");
 
@@ -55,6 +56,7 @@ const Security = () => {
   let offerValue =0;
   let sum =0;
   let OfferVolumeSum =0;
+  let cumulativeBid=0;
 
 
   const { securitySymbols, symbols, search, results, searched, loading } = data;
@@ -404,6 +406,26 @@ const Security = () => {
     return (
       <Fragment>
         <div className="row">
+        <div className="col-12 col-md-6 col-lg-6 col-xl-2">
+            <div className="card text-center border-bottom-sm border-top-sm border-dark">
+              <div className="card-body">
+                {offers.map((o, i) => {
+                  offersPrice = o.askprice;
+                  offersVolume += o.volume;
+                  totalOffersVolume += offersVolume;
+                  totalOffersValue += o.volume * o.askprice;
+                  OffersAverage = totalOffersValue / offersVolume;
+                })}
+                <Link to="#bidOfferTable">
+                  <h6>Symbol</h6>
+                  <h5 className="text-dark">
+                   SDCSCSPLC
+                  </h5>
+                  <span id="widget-chart-6"></span>
+                </Link>
+              </div>
+            </div>
+          </div>
           <div className="col-12 col-md-6 col-lg-6 col-xl-2">
             <div className="card text-center border-bottom-sm border-top-sm border-primary">
               {mcapData.map((smcap, i) => {
@@ -468,11 +490,9 @@ const Security = () => {
                   bidAverage = totalBidValue / bidVolume;
                 })}
 
-                <h6>Bid value(₦) </h6>
+                <h6>Dematerialization (%) </h6>
                 <p className="text-warning">
-                  {totalBidValue.toLocaleString(navigator.language, {
-                    minimumFractionDigits: 0
-                  })}
+                 ...
                 </p>
 
                 <span id="widget-chart-4"></span>
@@ -482,34 +502,13 @@ const Security = () => {
           <div className="col-12 col-md-6 col-lg-6 col-xl-2">
             <div className="card text-center border-bottom-sm border-top-sm border-info">
               <div className="card-body">
-                <h6>Bid Price(₦)</h6>
-                <h4 className="text-info">{bidAverage.toFixed(2)}</h4>
+                <h6>...</h6>
+                <h4 className="text-info">...</h4>
                 <span id="widget-chart-5"></span>
               </div>
             </div>
           </div>
-          <div className="col-12 col-md-6 col-lg-6 col-xl-2">
-            <div className="card text-center border-bottom-sm border-top-sm border-dark">
-              <div className="card-body">
-                {offers.map((o, i) => {
-                  offersPrice = o.askprice;
-                  offersVolume += o.volume;
-                  totalOffersVolume += offersVolume;
-                  totalOffersValue += o.volume * o.askprice;
-                  OffersAverage = totalOffersValue / offersVolume;
-                })}
-                <Link to="#bidOfferTable">
-                  <h6>Offers Value(₦)</h6>
-                  <p className="text-dark">
-                    {totalOffersValue.toLocaleString(navigator.language, {
-                      minimumFractionDigits: 0
-                    })}
-                  </p>
-                  <span id="widget-chart-6"></span>
-                </Link>
-              </div>
-            </div>
-          </div>
+         
         </div>
       </Fragment>
     );
@@ -522,27 +521,31 @@ const Security = () => {
         <div className="col-lg-6">
           <div className="card">
             <div className="card-body">
-              <h5 className="card-title">Bids</h5>
+              <h5 className="card-title  text-primary">Unmatched Bids&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Average price(₦):&nbsp;&nbsp;{bidAverage.toFixed(2)}</h5>
 			  <div className="table-responsive">
-        <table className="table table-bordered">
+        <table className="table table-bordered  text-primary">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">Symbol</th>
+                     
                       <th scope="col">Bid Price</th>
                       <th scope="col">Volume</th>
+                      <th scope="col">Cumulative Outstanding</th>
                       <th scope="col">Value(₦)</th>
                     </tr>
                   </thead>
                   <tbody>
                     {bids.map((bidT,i) => {
+                     
+                      cumulativeBid +=bidT.volume;
                       count++
                       return(
                         <tr key={i}>
                         <th scope="row">{count}</th>
-                        <td>{bidT.symbol}</td>
+                     
                         <td>{bidT.bidprice}</td>
                         <td>{bidT.volume}</td>
+                        <td>{cumulativeBid}</td>
                         <td>{(bidT.volume * bidT.bidprice).toLocaleString(navigator.language, {
                       minimumFractionDigits: 0
                     })}</td>
@@ -551,10 +554,10 @@ const Security = () => {
                      
                     })}
                      <tr>
-                    <th  scope="row">Ave</th>
+                    <th  scope="row">Total</th>
                     <td></td>
-                    <td>{bidAverage.toFixed(2)}</td>
                     <td>{bidVolume}</td>
+                    <td></td>
                    <td>{totalBidValue.toLocaleString(navigator.language, {
                       minimumFractionDigits: 0
                     })}</td>
@@ -570,15 +573,15 @@ const Security = () => {
         <div className="col-lg-6">
           <div className="card">
             <div className="card-body">
-              <h5 className="card-title">Offers</h5>
-			  <div id="bidOfferTable" className="table-responsive">
-              <table className="table table-bordered">
+              <h5 className="card-title text-danger">Unmatched Offers &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Average price(₦):&nbsp;&nbsp;{OffersAverage.toFixed(2)}</h5>
+			  <div id="bidOfferTable" className="table-responsive ">
+              <table className="table table-bordered text-danger">
                 <thead>
                   <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Symbol</th>
                   <th scope="col">Bid Price</th>
                   <th scope="col">Volume</th>
+                  <th scope="col">Cumulative Outstanding</th>
                   <th scope="col">Value(₦)</th>
                   </tr>
                 </thead>
@@ -596,9 +599,10 @@ const Security = () => {
                     return(
                       <tr key={i}>
                      <th scope="row">{countOffers}</th>
-                      <td>{offerT.symbol}</td>
+                    
                       <td>{offerT.askprice}</td> 
                       <td>{offerT.volume}</td>
+                      <td>{OfferVolumeSum}</td>
                       <td>{priceandvolume.toLocaleString(navigator.language, {
                       minimumFractionDigits: 0
                     })}</td>
@@ -607,10 +611,10 @@ const Security = () => {
                   })}
 
                   <tr>
-                    <th  scope="row">Ave</th>
+                    <th  scope="row">Total</th>
                     <td></td>
-                    <td>{sum.toFixed(2)}</td>
                     <td>{OfferVolumeSum}</td>
+                    <td></td>
                    <td>{offerValue.toLocaleString(navigator.language, {
                       minimumFractionDigits: 0
                     })}</td>

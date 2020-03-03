@@ -190,8 +190,8 @@ const InboxRead = ({match}) => {
                                                             <small class="text-muted">From : marketoperation@nasdng.com</small>
                                                         </div>
                                                     </div>
-                                                    <p><b>Hi Sir...</b></p>
-                                                    <p>Please download the attached file</p>
+                                                    <p><b>Dear Sir...</b></p>
+                                                    <p>Please download the attached market data files.</p>
                                                     <hr/>
                                              
                                                     <h4> <i class="fa fa-paperclip mr-2"></i> Attachments <span>(1)</span> </h4>

@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState, Component } from "react";
-import ReactHTMLTableToExcel from 'react-html-table-to-excel'
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import moment from "moment";
 
 const ExportToExcelEquity = ({post}) => {
 
@@ -31,7 +32,7 @@ const ExportToExcelEquity = ({post}) => {
                                             {post.map((r, i) => {
                                                 return(
                                                     <tr key={i}>
-                                                        <td> {r.DATE} </td>
+                                                        <td> {moment.utc(r.DATE).format('MM/DD/YYYY')} </td>
                                                         <td> {r.SYMBOL}</td>
                                                         <td> {r.DEALS}</td>
                                                         <td> {r.VOLUME}</td>

@@ -40,14 +40,17 @@ const Menu = ({history}) => (
    <div  style={{backgroundColor:"white"}}>
     <div className="row" style={{marginBottom:"-12px"}}>
        
-       <div className="col-xs-12 col-s-12 col-3">
+       <div className="col-xs-12 col-s-12 col-2">
                 <Link className="nav-link " style={isActive(history, '/')} to="/"> {marketStatus()} </Link>
       </div>
-      <div className="col-xs-12 col-s-12  col-5">
+      <div className="col-xs-12 col-s-12  col-4">
 <Link className="nav-link" style={isActive(history, '/')} to="/"><span className="badge badge-warning text-uppercase font-weight-bolder" style={{fontSize: "1rem"}}>Market Numbers For: {date()}</span></Link>
        </div>
        <div className="col-xs-12 col-s-12  col-2">
                 <Link className="nav-link" style={isActive(history, '/')} to="/"><img style={{marginTop: "-2"}} src={logo} height="30" className="App-logo mt5" alt="logo" /></Link>
+          </div>
+          <div className="col-xs-12 col-s-12  col-2">
+                <Link className="nav-link" style={isActive(history, '/')} to="/"><p className="badge badge-success" style={{fontSize: "1rem", color: "#a7ac2e" }}>NSE</p></Link>
           </div>
         {!isAuthenticated() && (
               <div className="col-xs-12 col-s-12  col-2">
