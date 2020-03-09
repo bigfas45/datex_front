@@ -4,10 +4,15 @@ import {isAuthenticated} from './index';
 
 
 const PrivateRoute = ({component: Component, ...rest}) => (
-    <Route {...rest} render={props => isAuthenticated() ? (
+
+  
+     
+    <Route {...rest} render={props => isAuthenticated() && isAuthenticated().user.group === 1 ? (
         <Component {...props} />
     ) : (
-        <Redirect to={{pathname: '/signin', state:{from: props.location}}} />
+        
+        // <Redirect to={{pathname: '/signin', state:{from: props.location}}} />
+        <Redirect to={{pathname: '/user/notallowed'}} />
     )} />
 );
 

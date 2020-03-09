@@ -178,9 +178,13 @@ const UserDashBoardLayout = ({history}) => {
                             <li className="dropdown-divider"></li>
                             <li className="dropdown-divider"></li>
                             <li className="dropdown-item">
-                            <span className="nav-link" style={{cursor: 'pointer'}}  onClick={() => signout(() => { history.push('/');})}>
+                            {/* <span className="nav-link" style={{cursor: 'pointer'}}  onClick={() => signout(() => { history.push('/');})}>
                                 <i className="icon-power mr-2"></i>
                                     Logout
+                             </span> */}
+                              <span className="nav-link" style={{cursor: 'pointer'}} >
+                                <i className="icon-power mr-2"></i>
+                                   <Link to="/user/logout">Logout</Link> 
                              </span>
                             </li>
                           

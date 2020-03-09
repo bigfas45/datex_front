@@ -40,7 +40,7 @@ const Menu = ({history}) => (
    <div  style={{backgroundColor:"white"}}>
     <div className="row" style={{marginBottom:"-12px"}}>
        
-       <div className="col-xs-12 col-s-12 col-2">
+       <div className="col-xs-12 col-s-12 col-3">
                 <Link className="nav-link " style={isActive(history, '/')} to="/"> {marketStatus()} </Link>
       </div>
       <div className="col-xs-12 col-s-12  col-4">
@@ -49,9 +49,7 @@ const Menu = ({history}) => (
        <div className="col-xs-12 col-s-12  col-2">
                 <Link className="nav-link" style={isActive(history, '/')} to="/"><img style={{marginTop: "-2"}} src={logo} height="30" className="App-logo mt5" alt="logo" /></Link>
           </div>
-          <div className="col-xs-12 col-s-12  col-2">
-                <Link className="nav-link" style={isActive(history, '/')} to="/"><p className="badge badge-success" style={{fontSize: "1rem", color: "#a7ac2e" }}>NSE</p></Link>
-          </div>
+         
         {!isAuthenticated() && (
               <div className="col-xs-12 col-s-12  col-2">
                 <Link className="nav-link" style={isActive(history, '/signin')} to="/signin"> <span className="badge badge-warning text-uppercase font-weight-bolder" style={{fontSize: "1rem"}}>LOGIN</span> </Link>
@@ -70,13 +68,13 @@ const Menu = ({history}) => (
 
 
             {isAuthenticated() && isAuthenticated().user.role === 0 && (
-                 <div className="col-xs-12 col-s-12  col-1">
+                 <div className="col-xs-12 col-s-12  col-2">
                  <Link className="nav-link" style={isActive(history, '/user/dashboard')} to="/user/dashboard"><span className="badge badge-primary text-uppercase font-weight-bolder" style={{fontSize: "1rem"}}> {isAuthenticated().user.name} <i class="icon-home"></i> </span></Link>
             </div>
             )}
 
             {isAuthenticated() && isAuthenticated().user.role === 1 && (
-                 <div className="col-xs-12 col-s-12  col-1">
+                 <div className="col-xs-12 col-s-12  col-2">
                  <Link className="nav-link" style={isActive(history, '/admin/dashboard')} to="/admin/dashboard"><span className="badge badge-primary text-uppercase font-weight-bolder" style={{fontSize: "1rem"}}>ADMIN <i class="icon-home"></i></span></Link>
             </div>
             )}

@@ -7,7 +7,10 @@ import { isAuthenticated } from "../auth";
 import { Live, yearTrade, MarketIndexT } from "../core/Apicore";
 import Loader from "react-loader-spinner";
 
-const Home = history => {
+const Home = ({history}) => {
+  
+
+  
   let Tdeals = 0;
   let TvolumeTrade = 0;
   let TvalueTrade = 0;
