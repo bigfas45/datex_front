@@ -30,6 +30,14 @@ import UpdateReport from './admin/UpdateReport';
 import Clients from './admin/Clients';
 import CreateClientUser from './admin/CreateClientUser';
 import ClientUserUpdate from './admin/ClientUserUpdate';
+import Mail from './admin/Mail';
+import ManageMail from './admin/ManageMail';
+import TestMail from './admin/TestMail';
+import UpdateMail from './admin/UpdateMail';
+import NaseNseParticipantEmail from './admin/NaseNseParticipantEmail';
+
+
+
 import Corporate_action from './user/Corporate_action';
 import Bonds from './user/Bonds';
 import NotAllowed from './user/NotAllowed';
@@ -83,6 +91,11 @@ const Routes = () => {
                  <AdminRoute path="/admin/manage/clients" exact component={Clients} />
                  <AdminRoute path="/admin/user/create" exact component={CreateClientUser} />
                  <AdminRoute path="/admin/user/update/:itemId" exact component={ClientUserUpdate} />
+                 <AdminRoute path="/admin/user/mail" exact component={Mail} />
+                 <AdminRoute path="/admin/user/mail/manage" exact component={ManageMail} />
+                 <AdminRoute path="/admin/user/mail/test/:emailId" exact component={TestMail} />
+                 <AdminRoute path="/admin/user/mail/update/:emailId" exact component={UpdateMail} />
+                 <AdminRoute path="/admin/user/mail/allparticipant/:emailId" exact component={NaseNseParticipantEmail} />
             </Switch>
         </BrowserRouter>
     );

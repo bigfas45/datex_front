@@ -205,6 +205,108 @@ export const createAnnualReport = (userId, token, report) => {
   };
 
 
+  export const createMail = (userId, token, report) => {
+    // console.log(name, email, password);
+    return fetch(`${API}/mail/${userId}`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: report
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
 
+
+
+  export const getMail = () => {
+    return fetch(`${API}/mail/list`, {
+      method: "GET"
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => console.log(err));
+  };
+
+
+
+
+
+
+  export const sendtestMail = (mailId, userId, token) => {
   
+    return fetch(`${API}/mail/mailtest/${mailId}/${userId}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+  
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+
+  export const sendEmailToAllMarketParticiapnt = (mailId, userId, token) => {
+  
+    return fetch(`${API}/mail/sendEmailToAllMarketParticiapnt/${mailId}/${userId}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+  
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+
+  export const getMailUpdate = (mailId) => {
+    return fetch(`${API}/mail/${mailId}`, {
+      method: "GET"
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => console.log(err));
+  };
+
+
+  export const updateEmail = (EmailId, userId, token, report) => {
+    // console.log(name, email, password);
+    return fetch(`${API}/mail/${EmailId}/${userId}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: report
+  
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };

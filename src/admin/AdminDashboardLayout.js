@@ -35,6 +35,7 @@ const AdminDashBoardLayout = ({history}) => {
       <li><Link to="/admin/security" className="waves-effect"><i className="fa fa-circle-o text-aqua"></i> <span>Security</span></Link></li>
       <li><Link to="/admin/manage/annualreport" className="waves-effect"><i className="fa fa-circle-o text-aqua"></i> <span>Manage Annual Report</span></Link></li>
       <li><Link to="/admin/manage/clients" className="waves-effect"><i className="fa fa-circle-o text-aqua"></i> <span>Manage Clients</span></Link></li>
+      <li><Link to="/admin/user/mail/manage" className="waves-effect"><i className="fa fa-circle-o text-aqua"></i> <span>Manage Mails</span></Link></li>
     <li className="sidebar-header">LABELS</li>
       
       <li><Link to="#" className="waves-effect"><i className="fa fa-circle-o text-aqua"></i> <span>Information</span></Link></li>

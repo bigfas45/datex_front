@@ -4,20 +4,10 @@
 (function ( $ ) { 
 
   
-    $('#default-datatable').DataTable();
-
-
-    var table = $('#example').DataTable({
-        lengthChange: true,
-        buttons: [
-            'copy',
-            'excel',
-            'pdf',
-            'print',
-            'colvis'
-        ]
+    $('#summernoteEditor').summernote({
+        height: 400,
+        tabsize: 2
     });
 
-    table.buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
 
 }( jQuery ));
