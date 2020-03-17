@@ -2,18 +2,16 @@ import React, { Fragment, useState, useEffect } from "react";
 import Ticker from "../core/Ticker";
 import Dashboard from "./AdminDashboardLayout";
 import { isAuthenticated } from "../auth";
-import { createAnnualReport, getSecurities } from "./ApiAdmin";
+import { getPrice, getSecurities, updatePrice } from "./ApiAdmin";
 import Spinner from "react-bootstrap/Spinner";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
-const AddAnnualReport = history => {
+const UpdatePriceList = ({match}) => {
   const [values, setValues] = useState({
-    company: "",
-    year: "",
-    filename: "",
     securities: [],
     security: "",
-    file: "",
+    Ref_Price: "",
+    Open_Price: "",
     loading: false,
     error: "",
     createdReport: "",
@@ -22,11 +20,11 @@ const AddAnnualReport = history => {
   });
 
   const {
-    company,
-    year,
-    filename,
+    
     securities,
     security,
+    Ref_Price,
+    Open_Price,
     loading,
     error,
     createdReport,
@@ -36,20 +34,33 @@ const AddAnnualReport = history => {
 
   const { user, token } = isAuthenticated();
 
+  const init = (priceId) => {
+    getPrice(priceId,token).then(data => {
+          if(data.error){
+                setValues({...values, error: data.error})
+          }else{
+            // populate the state
+            setValues({...values, security: data.security.symbol, Ref_Price: data.Ref_Price, Open_Price: data.Open_Price, formData: new FormData()})
+            // load security
+            initSecurity()
+          }
+      })
+  }
+
   // load security and set FormData
 
-  const init = () => {
+  const initSecurity = () => {
     getSecurities().then(data => {
       if (data.error) {
         setValues({...values, error:data.error})
       }else{
-        setValues({...values,securities: data, formData: new FormData() })
+        setValues({securities: data, formData: new FormData() })
       }
     })
   }
 
   useEffect(() => {
-    init();
+    init(match.params.priceId);
   }, []);
 
   const handleChnage = name => event => {
@@ -63,18 +74,20 @@ const AddAnnualReport = history => {
     event.preventDefault();
     setValues({ ...values, error: "", loading: true });
 
-    createAnnualReport(user._id, token, formData).then(data => {
+    updatePrice(match.params.priceId, user._id, token, formData).then(data => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
         setValues({
           ...values,
-          company: "",
-          year: "",
-          filename: "",
-          file: "",
+          securities,
+            security,
+            Ref_Price,
+            Open_Price,
           loading: false,
-          createdReport: data.company
+          error: false,
+          redirectToProfile: true,
+          createdReport: data.Open_Price
         });
       }
     });
@@ -85,77 +98,60 @@ const AddAnnualReport = history => {
       <div className="col-lg-10 mx-auto">
         <div className="card">
           <div className="card-body">
-            <div className="card-title">Annual Report Creation Form</div>
+            <div className="card-title">Price Update Form</div>
             <hr />
             <form onSubmit={clickSubmit}>
-              <div className="form-group">
-                <label htmlFor="input-1">File</label>
-                <input
-                  onChange={handleChnage("file")}
-                  type="file"
-                  name="file"
-                  className="form-control"
-                  id="input-1"
-                />
-              </div>
+             
 
-              <div className="form-group">
-                <label htmlFor="input-1">Company</label>
-                <input
-                  onChange={handleChnage("company")}
-                  type="text"
-                  className="form-control"
-                  id="input-1"
-                  placeholder="Enter Company Name"
-                  value={company}
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="input-1">Year</label>
-                <input
-                  onChange={handleChnage("year")}
-                  type="number"
-                  className="form-control"
-                  id="input-1"
-                  placeholder="Enter Year"
-                  value={year}
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="input-1">File Name</label>
-                <input
-                  onChange={handleChnage("filename")}
-                  type="text"
-                  className="form-control"
-                  id="input-1"
-                  placeholder="Enter File Name"
-                  value={filename}
-                />
-              </div>
-
-              <div className="form-group">
+             
+            <div className="form-group">
                 <label htmlFor="input-1">Security</label>
                 <select
                   onChange={handleChnage("security")}
                   className="form-control"
                   id="input-1"
+                  
                 >
-                  <option value="">~~~~Please Select~~~</option>
+                  <option value="">{security}</option>
                   {securities && securities.map((s, i) =>
                   (   <option key={i} value={s._id}>{s.symbol}</option>)
                   )}
-                  <option value="5e4a7e55d09f064864e9bd34">SDFCWAMCO</option>
+                 
                 </select>
               </div>
+
+              <div className="form-group">
+                <label htmlFor="input-1">Ref Price</label>
+                <input
+                  onChange={handleChnage("Ref_Price")}
+                  type="number"
+                  className="form-control"
+                  id="input-1"
+                  placeholder="Enter Year"
+                  value={Ref_Price}
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="input-1">Close Price</label>
+                <input
+                  onChange={handleChnage("Open_Price")}
+                  type="text"
+                  className="form-control"
+                  id="input-1"
+                  placeholder="Enter File Name"
+                  value={Open_Price}
+                />
+              </div>
+
+            
 
               <div className="form-group">
                 <button
                   type="submit"
                   className="btn btn-primary shadow-primary px-5"
                 >
-                  <i className="icon-lock"></i> Create Report
+                  <i className="icon-lock"></i> Update Price
                 </button>
               </div>
             </form>
@@ -204,7 +200,6 @@ const AddAnnualReport = history => {
 
   const showSuccess = () => (
 
-
     <div className="alert alert-outline-success alert-dismissible" role="alert" style={{display: createdReport ? '' : 'none'}}>
         <button type="button" className="close" data-dismiss="alert">&times;</button>
       
@@ -216,9 +211,6 @@ const AddAnnualReport = history => {
         </div>
               </div>
 
-
-
-    
 );
 
   const showError = () => (
@@ -233,12 +225,13 @@ const AddAnnualReport = history => {
               </div>
 );
 
-const goBack = () => {
-  return(
-<div className="mt-5">
-     <Link to="/admin/dashboard" className="text-warning">Dashboard</Link>
-  </div>
-  )
+const redirectUser = () => {
+
+    if (redirectToProfile) {
+        if (!error) {
+            return <Redirect to="/admin/user/price/list" />
+        }
+    }
   
 }
     
@@ -274,13 +267,12 @@ const showLoading = () => (
           {showLoading()}
           {showSuccess()}
           {showError()}
-       
-       
           {newPostForm()}
+          {redirectUser()}
         </div>
       </div>
     </Fragment>
   );
 };
 
-export default AddAnnualReport;
+export default UpdatePriceList;

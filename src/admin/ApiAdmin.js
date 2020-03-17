@@ -281,6 +281,26 @@ export const createAnnualReport = (userId, token, report) => {
   };
 
 
+  export const sendEmailToNasdParticipant = (mailId, userId, token) => {
+  
+    return fetch(`${API}/mail/sendEmailToNasdParticipant/${mailId}/${userId}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+  
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+
   export const getMailUpdate = (mailId) => {
     return fetch(`${API}/mail/${mailId}`, {
       method: "GET"
@@ -301,6 +321,72 @@ export const createAnnualReport = (userId, token, report) => {
         Authorization: `Bearer ${token}`
       },
       body: report
+  
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+
+  export const createPrice = (userId, token, price) => {
+    // console.log(name, email, password);
+    return fetch(`${API}/price/${userId}`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: price
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+  export const getPriceList = (userId,token) => {
+    return fetch(`${API}/price/list/${userId}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => console.log(err));
+  };
+
+
+  
+  export const getPrice = (userId) => {
+    return fetch(`${API}/price/${userId}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => console.log(err));
+  };
+
+  export const updatePrice = (priceId, userId, token, price) => {
+    // console.log(name, email, password);
+    return fetch(`${API}/price/${priceId}/${userId}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: price
   
     })
       .then(response => {

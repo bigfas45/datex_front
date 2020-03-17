@@ -176,7 +176,7 @@ const Mail = ({match}) => {
               </button>
               <div className="dropdown-menu">
               <Link to={`/admin/user/mail/test/${match.params.emailId}`} class="dropdown-item">Market Operation</Link>
-              <Link to={`/admin/user/mail/allparticipant/${match.params.emailId}`} class="dropdown-item">NASD Participant</Link>
+              <Link to={`/admin/user/mail/nasdparticipant/${match.params.emailId}`} class="dropdown-item">NASD Participant</Link>
              
             
               

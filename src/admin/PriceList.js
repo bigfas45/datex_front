@@ -2,43 +2,46 @@ import React, { Fragment, useState, useEffect } from "react";
 import Ticker from "../core/Ticker";
 import Dashboard from "./AdminDashboardLayout";
 import { isAuthenticated } from "../auth";
-import { getReports, deleteReport } from "./ApiAdmin";
+import { getPriceList} from "./ApiAdmin";
 import Spinner from "react-bootstrap/Spinner";
 import { Link } from "react-router-dom";
-import ShowFile from "../user/ShowFile"
+import ShowFile from "../admin/ShowFile";
+import WordLimit from 'react-word-limit';
 
 
 
-const ManageProduct = history => {
+const ManagePriceList = () => {
 
-    const [report, setReports] = useState([])
+    const [price, setPrice] = useState([]);
 
     const {user, token} = isAuthenticated()
     let count =0;
     let totalReport =0;
 
-    const loadReport = () => {
-        getReports().then(data => {
+    const loadMail = () => {
+        getPriceList(user._id,token).then(data => {
             if (data.error) {
                 console.log(data.error)
             }else{
-                setReports(data)
+                setPrice(data)
             }
         })
     }
 
-    const destroy = reportId => {
-        deleteReport(reportId, user._id, token ).then(data => {
-            if (data.error) {
-                console.log(data.error)
-            }else{
-                loadReport()
-            }
-        })
-    }
+
+
+    // const destroy = reportId => {
+    //     deleteReport(reportId, user._id, token ).then(data => {
+    //         if (data.error) {
+    //             console.log(data.error)
+    //         }else{
+    //             loadReport()
+    //         }
+    //     })
+    // }
 
     useEffect(() => {
-        loadReport()
+        loadMail();
     }, [])
 
 
@@ -54,12 +57,7 @@ const ManageProduct = history => {
                   Dashboard
                 </Link>
               </li>
-              <li className="breadcrumb-item">
-                annualreport
-              </li>
-              <li className="breadcrumb-item active" aria-current="page">
-              Manage Report Layouts
-              </li>
+              
             </ol>
           </div>
           <div className="col-sm-3">
@@ -78,7 +76,7 @@ const ManageProduct = history => {
                 <span className="caret"></span>
               </button>
               <div className="dropdown-menu">
-              <Link to="/admin/annualreport" class="dropdown-item">Create Report</Link>
+              <Link to="/admin/user/price/create" class="dropdown-item">Create Price List</Link>
               
               <div class="dropdown-divider"></div>
               <a href="javaScript:void();" class="dropdown-item">Separated link</a>
@@ -93,7 +91,7 @@ const ManageProduct = history => {
             <div class="row">
             <div class="col-lg-12">
               <h6 class="text-uppercase text-white">
-               Total  {report.length} Report
+               Total  {price.length} Price Listed
               </h6>
               <hr />
               <div class="card">
@@ -103,39 +101,36 @@ const ManageProduct = history => {
                       <thead class="thead-primary">
                         <tr>
                           <th scope="col">#</th>
-                          <th scope="col">Comapny</th>
-                          <th scope="col">year</th>
-                          <th scope="col">File name</th>
                           <th scope="col">Security</th>
-                          <th scope="col">File</th>
+                          <th scope="col">Open Price</th>
+                          <th scope="col">Close Price</th>
                           <th scope="col">Action</th>
                         </tr>
                       </thead>
                       <tbody>
 
-                          {report.map((r, i) => {
+                          {price.map((r, i) => {
                               count++
                              
                               return(
                                 <tr key={i}>
                                 <th scope="row">{count}</th>
-                                <td>{r.company}</td>
-                                <td>{r.year}</td>
-                                <td>{r.filename}</td>
                                 <td>{r.security && r.security.symbol }</td>
+                                <td>{r.Ref_Price}</td>
+                                <td>{r.Open_Price}</td>
+                              
+                              
+                               
                                 <td>
-                                <ShowFile item={r} url="nasd/annualreport" />
-                                </td>
-                                <td>
-                                  <Link to={`/admin/annualreport/update/${r._id}`} >
+                                  <Link to={`/admin/user/price/${r._id}`} >
                                       <span className="badge badge-warning badge-pill">
-                                        Update
+                                      Update
                                       </span>
                                   </Link>
                                
-                                      <span onClick={() => destroy(r._id)} className="badge badge-danger badge-pill">
+                                      {/* <span onClick={() => destroy(r._id)} className="badge badge-danger badge-pill">
                                         Delete
-                                      </span>
+                                      </span> */}
                                  
                                 </td>
                               </tr>
@@ -177,4 +172,4 @@ const ManageProduct = history => {
 }
 
 
-export default ManageProduct
+export default ManagePriceList

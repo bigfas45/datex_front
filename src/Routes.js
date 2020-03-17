@@ -34,10 +34,13 @@ import Mail from './admin/Mail';
 import ManageMail from './admin/ManageMail';
 import TestMail from './admin/TestMail';
 import UpdateMail from './admin/UpdateMail';
+import SecurityPriceList from './admin/PriceList';
+import UpdatePriceList from './admin/UpdatePriceList';
+
 import NaseNseParticipantEmail from './admin/NaseNseParticipantEmail';
+import NasdParticipantEmail from './admin/NasdParticipantEmail';
 
-
-
+import SecuritiesPrice from './admin/Price';
 import Corporate_action from './user/Corporate_action';
 import Bonds from './user/Bonds';
 import NotAllowed from './user/NotAllowed';
@@ -96,6 +99,11 @@ const Routes = () => {
                  <AdminRoute path="/admin/user/mail/test/:emailId" exact component={TestMail} />
                  <AdminRoute path="/admin/user/mail/update/:emailId" exact component={UpdateMail} />
                  <AdminRoute path="/admin/user/mail/allparticipant/:emailId" exact component={NaseNseParticipantEmail} />
+                 <AdminRoute path="/admin/user/mail/nasdparticipant/:emailId" exact component={NasdParticipantEmail} />
+
+                 <AdminRoute path="/admin/user/price/create" exact component={SecuritiesPrice} />
+                 <AdminRoute path="/admin/user/price/list" exact component={SecurityPriceList} />
+                 <AdminRoute path="/admin/user/price/:priceId" exact component={UpdatePriceList} />
             </Switch>
         </BrowserRouter>
     );

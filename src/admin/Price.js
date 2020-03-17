@@ -2,18 +2,17 @@ import React, { Fragment, useState, useEffect } from "react";
 import Ticker from "../core/Ticker";
 import Dashboard from "./AdminDashboardLayout";
 import { isAuthenticated } from "../auth";
-import { createAnnualReport, getSecurities } from "./ApiAdmin";
+import { createPrice, getSecurities } from "./ApiAdmin";
 import Spinner from "react-bootstrap/Spinner";
 import { Link } from "react-router-dom";
 
-const AddAnnualReport = history => {
+const CreatePrice = () => {
   const [values, setValues] = useState({
-    company: "",
-    year: "",
-    filename: "",
+   
     securities: [],
     security: "",
-    file: "",
+    Ref_Price: "",
+    Open_Price: "",
     loading: false,
     error: "",
     createdReport: "",
@@ -22,11 +21,11 @@ const AddAnnualReport = history => {
   });
 
   const {
-    company,
-    year,
-    filename,
+    
     securities,
     security,
+    Ref_Price,
+    Open_Price,
     loading,
     error,
     createdReport,
@@ -63,16 +62,15 @@ const AddAnnualReport = history => {
     event.preventDefault();
     setValues({ ...values, error: "", loading: true });
 
-    createAnnualReport(user._id, token, formData).then(data => {
+    createPrice(user._id, token, formData).then(data => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
         setValues({
           ...values,
-          company: "",
-          year: "",
-          filename: "",
-          file: "",
+          Ref_Price: "",
+          Open_Price: "",
+        
           loading: false,
           createdReport: data.company
         });
@@ -85,55 +83,15 @@ const AddAnnualReport = history => {
       <div className="col-lg-10 mx-auto">
         <div className="card">
           <div className="card-body">
-            <div className="card-title">Annual Report Creation Form</div>
+            <div className="card-title">Price creation</div>
             <hr />
             <form onSubmit={clickSubmit}>
-              <div className="form-group">
-                <label htmlFor="input-1">File</label>
-                <input
-                  onChange={handleChnage("file")}
-                  type="file"
-                  name="file"
-                  className="form-control"
-                  id="input-1"
-                />
-              </div>
+            
 
-              <div className="form-group">
-                <label htmlFor="input-1">Company</label>
-                <input
-                  onChange={handleChnage("company")}
-                  type="text"
-                  className="form-control"
-                  id="input-1"
-                  placeholder="Enter Company Name"
-                  value={company}
-                />
-              </div>
+              
 
-              <div className="form-group">
-                <label htmlFor="input-1">Year</label>
-                <input
-                  onChange={handleChnage("year")}
-                  type="number"
-                  className="form-control"
-                  id="input-1"
-                  placeholder="Enter Year"
-                  value={year}
-                />
-              </div>
+            
 
-              <div className="form-group">
-                <label htmlFor="input-1">File Name</label>
-                <input
-                  onChange={handleChnage("filename")}
-                  type="text"
-                  className="form-control"
-                  id="input-1"
-                  placeholder="Enter File Name"
-                  value={filename}
-                />
-              </div>
 
               <div className="form-group">
                 <label htmlFor="input-1">Security</label>
@@ -142,12 +100,34 @@ const AddAnnualReport = history => {
                   className="form-control"
                   id="input-1"
                 >
-                  <option value="">~~~~Please Select~~~</option>
+                  <option value={security}>~~~~Please Select~~~</option>
                   {securities && securities.map((s, i) =>
                   (   <option key={i} value={s._id}>{s.symbol}</option>)
                   )}
-                  <option value="5e4a7e55d09f064864e9bd34">SDFCWAMCO</option>
+               
                 </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="input-1">Open Price</label>
+                <input
+                  onChange={handleChnage("Ref_Price")}
+                  type="number"
+                  className="form-control"
+                  id="input-1"
+                  placeholder="Enter Open Price"
+                  value={Ref_Price}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="input-1">Close Price</label>
+                <input
+                  onChange={handleChnage("Open_Price")}
+                  type="number"
+                  className="form-control"
+                  id="input-1"
+                  placeholder="Enter Close Price"
+                  value={Open_Price}
+                />
               </div>
 
               <div className="form-group">
@@ -176,7 +156,7 @@ const AddAnnualReport = history => {
               Dashboard
             </Link>
           </li>
-          <Link to="/admin/manage/annualreport" className="breadcrumb-item">Annual report list</Link>
+          <Link to="/admin/user/price/list" className="breadcrumb-item">Price list</Link>
          
         </ol>
       </div>
@@ -283,4 +263,4 @@ const showLoading = () => (
   );
 };
 
-export default AddAnnualReport;
+export default CreatePrice;
