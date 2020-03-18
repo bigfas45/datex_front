@@ -11,8 +11,8 @@ const Signin = () => {
   
     const [values, setValues] = useState({
        
-        email: 'afasina@nasdng.com',
-        password: 'ifeoluwa2016',
+        email: '',
+        password: '',
         error: '',
         loading: false,
         redirectToReferrer: false, 
