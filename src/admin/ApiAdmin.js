@@ -396,3 +396,21 @@ export const createAnnualReport = (userId, token, report) => {
         console.log(err);
       });
   };
+
+
+  export const createFile = (userId, token, file) => {
+    return fetch(`${API}/price/file/upload/${userId}`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: file
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
