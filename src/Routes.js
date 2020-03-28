@@ -44,6 +44,11 @@ import Corporate_action from './user/Corporate_action';
 import Bonds from './user/Bonds';
 import NotAllowed from './user/NotAllowed';
 import Logout from './user/Logout';
+import EodFileManage from './admin/EodFileManage';
+import EodFileUpload from './admin/EodFileUpload';
+import EodFileUploadUpdate from './admin/EodFileUploadUpdate';
+import Vwap from './admin/Vwap';
+
 
 
 
@@ -98,13 +103,15 @@ const Routes = () => {
                  <AdminRoute path="/admin/user/mail/test/:emailId" exact component={TestMail} />
                  <AdminRoute path="/admin/user/mail/update/:emailId" exact component={UpdateMail} />
                  <AdminRoute path="/admin/user/mail/allparticipant/:emailId" exact component={NaseNseParticipantEmail} />
-                 <AdminRoute path="/admin/user/mail/nasdparticipant/:emailId" exact component={NasdParticipantEmail} />
+                   <AdminRoute path="/admin/user/mail/nasdparticipant/:emailId" exact component={NasdParticipantEmail} />
                  <AdminRoute path="/admin/user/file/upload" exact component={UploadFile} />
-
-
+                 <AdminRoute path="/admin/user/eod/manage" exact component={EodFileManage} />
+                 <AdminRoute path="/admin/user/eod/upload" exact component={EodFileUpload} />
+                 <AdminRoute path="/admin/user/eod/upload/update/:eodId" exact component={EodFileUploadUpdate} />
                  <AdminRoute path="/admin/user/price/create" exact component={SecuritiesPrice} />
                  <AdminRoute path="/admin/user/price/list" exact component={SecurityPriceList} />
                  <AdminRoute path="/admin/user/price/:priceId" exact component={UpdatePriceList} />
+                 <AdminRoute path="/admin/user/vwap" exact component={Vwap} />
             </Switch>
         </BrowserRouter>
     );

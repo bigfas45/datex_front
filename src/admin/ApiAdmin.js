@@ -414,3 +414,118 @@ export const createAnnualReport = (userId, token, report) => {
         console.log(err);
       });
   };
+
+  export const getEodFileList = (userId,token) => {
+    return fetch(`${API}/price/file/list/${userId}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => console.log(err));
+  };
+
+
+  export const deleteEod = (reportId, userId, token) => {
+    // console.log(name, email, password);
+    return fetch(`${API}/price/file/upload/${reportId}/${userId}`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+  
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+
+  export const getEodUpdate = (eodId) => {
+    return fetch(`${API}/price/file/upload/${eodId}`, {
+      method: "GET"
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => console.log(err));
+  };
+
+
+
+  export const updateEod = (eodId, userId, token, eod) => {
+    // console.log(name, email, password);
+    return fetch(`${API}/price/file/upload/${eodId}/${userId}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: eod
+  
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+
+
+  export const getEod = (userId,token) => {
+    return fetch(`${API}/vwap/eod/${userId}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => console.log(err));
+  };
+
+  export const dailyEodUpload = (eodId) => {
+    return fetch(`${API}/price/eod/upload/${eodId}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+  
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+
+
+  export const getEodDelete = (userId,token) => {
+    return fetch(`${API}/price/eod/delete/${userId}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => console.log(err));
+  };
