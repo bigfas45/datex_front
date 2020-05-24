@@ -81,7 +81,7 @@ const UserDashBoardLayout = ({history}) => {
 
     <li className="sidebar-header">LABELS</li>
       
-      <li><Link to="/user/equity/monthly" className="waves-effect"><i className="fa fa-circle-o text-aqua"></i> <span>Information</span></Link></li>
+      <li><Link to={`/user/profile/${_id}`} className="waves-effect"><i className="fa fa-circle-o text-aqua"></i> <span>Profile</span></Link></li>
  </ul>
  </div>
  {/* <!--End sidebar-wrapper--> */}

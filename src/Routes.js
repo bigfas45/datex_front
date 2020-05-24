@@ -48,7 +48,9 @@ import EodFileManage from './admin/EodFileManage';
 import EodFileUpload from './admin/EodFileUpload';
 import EodFileUploadUpdate from './admin/EodFileUploadUpdate';
 import Vwap from './admin/Vwap';
+import Profile from './user/Profile';
 
+import PiList from './admin/PiList';
 
 
 
@@ -112,6 +114,9 @@ const Routes = () => {
                  <AdminRoute path="/admin/user/price/list" exact component={SecurityPriceList} />
                  <AdminRoute path="/admin/user/price/:priceId" exact component={UpdatePriceList} />
                  <AdminRoute path="/admin/user/vwap" exact component={Vwap} />
+                 <AdminRoute path="/user/profile/:userId" exact component={Profile} />
+                 <AdminRoute path="/admin/pi" exact component={PiList} />
+
             </Switch>
         </BrowserRouter>
     );

@@ -48,6 +48,18 @@ export const createAnnualReport = (userId, token, report) => {
       })
       .catch(err => console.log(err));
   };
+
+
+  export const getPiList = () => {
+    return fetch(`${API}/pi/list`, {
+      method: "GET"
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => console.log(err));
+  };
+  
   
 
   /**
@@ -523,6 +535,40 @@ export const createAnnualReport = (userId, token, report) => {
         Accept: "application/json",
         Authorization: `Bearer ${token}`
       },
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => console.log(err));
+  };
+
+  export const getVapSec = () => {
+    return fetch(`${API}/vwap/get/sec`, {
+      method: "GET",
+    
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => console.log(err));
+  };
+
+
+  export const getVapSecDeals = (sec) => {
+    return fetch(`${API}/vwap/sec/trade/${sec}`, {
+      method: "GET",
+    
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => console.log(err));
+  };
+
+  export const getTradeSum = (sec) => {
+    return fetch(`${API}/vwap/trade/sum`, {
+      method: "GET",
+    
     })
       .then(response => {
         return response.json();
