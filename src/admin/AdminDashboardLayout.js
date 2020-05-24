@@ -40,6 +40,7 @@ const AdminDashBoardLayout = ({history}) => {
       <li><Link to="/admin/user/price/list" className="waves-effect"><i className="fa fa-circle-o text-aqua"></i> <span>Price</span></Link></li>
       <li><Link to="/admin/user/eod/manage" className="waves-effect"><i className="fa fa-circle-o text-aqua"></i> <span>EOD uploads</span></Link></li>
       <li><Link to="/admin/user/vwap" className="waves-effect"><i className="fa fa-circle-o text-aqua"></i> <span>VWPA</span></Link></li>
+      <li><Link to="/admin/pi" className="waves-effect"><i className="fa fa-circle-o text-aqua"></i> <span>PI</span></Link></li>
 
     <li className="sidebar-header">LABELS</li>
       
