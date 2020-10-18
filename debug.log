@@ -1,0 +1,23 @@
+[1013/084150.432:ERROR:file_io.cc(90)] ReadExactly: expected 560, observed 0
+[1013/084150.434:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1018/090937.603:ERROR:file_io.cc(90)] ReadExactly: expected 560, observed 0
+[1018/090937.620:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1018/091937.582:ERROR:file_io.cc(90)] ReadExactly: expected 560, observed 0
+[1018/091937.582:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1018/091937.582:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1018/091937.582:ERROR:file_io.cc(90)] ReadExactly: expected 560, observed 0
+[1018/091937.582:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1018/091937.583:ERROR:file_io.cc(90)] ReadExactly: expected 560, observed 0
+[1018/091937.583:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1018/092437.622:ERROR:file_io.cc(90)] ReadExactly: expected 560, observed 0
+[1018/092437.622:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1018/093330.543:ERROR:file_io.cc(90)] ReadExactly: expected 560, observed 0
+[1018/093330.544:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1018/093937.622:ERROR:file_io.cc(90)] ReadExactly: expected 560, observed 0
+[1018/093937.622:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1018/095437.624:ERROR:file_io.cc(90)] ReadExactly: expected 560, observed 0
+[1018/095437.624:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1018/100032.587:ERROR:file_io.cc(90)] ReadExactly: expected 560, observed 0
+[1018/100032.587:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1018/100937.624:ERROR:file_io.cc(90)] ReadExactly: expected 560, observed 0
+[1018/100937.624:ERROR:crash_report_database_win.cc(476)] failed to read records

@@ -45,62 +45,48 @@ const EodFileUpload = () => {
   }, []);
 
 
-    const handleChnage = name => event => {
-        const value = name === "file" ? event.target.files[0] : event.target.value;
-        formData.set(name, value);
-        setValues({ ...values, [name]: value });
-      };
-    
+//   const init = () => {
+   
+//     setValues({...values, formData: new FormData() })
+  
 
-    const clickSubmit = event => {
-        //
-        event.preventDefault();
-        setValues({ ...values, error: "", loading: true });
+// }
+
+useEffect(() => {
+init();
+
+}, []);
+
+    // const newPostForm = () => (
+    //     <div className="row">
+    //       <div className="col-lg-10 mx-auto">
+    //         <div className="card">
+    //           <div className="card-body">
+    //             <div className="card-title">EOD File Upload Creation Form</div>
+    //             <hr />
+    //             <form onSubmit={clickSubmit}>
+    //               <div className="form-group">
+    //                 <label htmlFor="input-1">File</label>
+    //                 <input
+    //                   onChange={handleChnage("file")}
+    //                   type="file"
+    //                   name="file"
+    //                   className="form-control"
+    //                   id="input-1"
+    //                 />
+    //               </div>
     
-        createFile(user._id, token, formData).then(data => {
-          if (data.error) {
-            setValues({ ...values, error: data.error });
-          } else {
-            setValues({
-              ...values,
-              name: "",
-              file: "",
-              loading: false,
-              createdMail: data.subject
-            });
-          }
-        });
-      };
-    const newPostForm = () => (
-        <div className="row">
-          <div className="col-lg-10 mx-auto">
-            <div className="card">
-              <div className="card-body">
-                <div className="card-title">EOD File Upload Creation Form</div>
-                <hr />
-                <form onSubmit={clickSubmit}>
-                  <div className="form-group">
-                    <label htmlFor="input-1">File</label>
-                    <input
-                      onChange={handleChnage("file")}
-                      type="file"
-                      name="file"
-                      className="form-control"
-                      id="input-1"
-                    />
-                  </div>
-    
-                  <div className="form-group">
-                    <label htmlFor="input-1">Name</label>
-                    <input
-                      onChange={handleChnage("name")}
-                      type="text"
-                      className="form-control"
-                      id="input-1"
-                      placeholder="Enter Mail Subject"
-                      value={name}
-                    />
-                  </div>
+    //               <div className="form-group">
+    //                 <label htmlFor="input-1">Name</label>
+    //                 <input
+    //                   onChange={handleChnage("name")}
+    //                   type="text"
+    //                   className="form-control"
+    //                   id="input-1"
+    //                   placeholder="Enter Mail Subject"
+    //                   value={name}
+    //                 />
+    //               </div>
     
                   
     
@@ -108,20 +94,20 @@ const EodFileUpload = () => {
     
                 
     
-                  <div className="form-group">
-                    <button
-                      type="submit"
-                      className="btn btn-primary shadow-primary px-5"
-                    >
-                      <i className="icon-lock"></i> Upload EOD File
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      );
+    //               <div className="form-group">
+    //                 <button
+    //                   type="submit"
+    //                   className="btn btn-primary shadow-primary px-5"
+    //                 >
+    //                   <i className="icon-lock"></i> Upload EOD File
+    //                 </button>
+    //               </div>
+    //             </form>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   );
     const breadcrumb = () => (
         <div className="row pt-2 pb-2">
           <div className="col-sm-9">
@@ -224,11 +210,11 @@ const EodFileUpload = () => {
       <div className="content-wrapper">
         <div className="container-fluid">
           <Ticker></Ticker>
-          {breadcrumb()}
+          {/* {breadcrumb()}
           {showLoading()}
           {showSuccess()}
           {showError()}
-          {newPostForm()}
+          {newPostForm()} */}
          
         </div>
       </div>

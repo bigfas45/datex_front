@@ -256,7 +256,7 @@ export const createAnnualReport = (userId, token, report) => {
   export const sendtestMail = (mailId, userId, token) => {
   
     return fetch(`${API}/mail/mailtest/${mailId}/${userId}`, {
-      method: "GET",
+      method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
