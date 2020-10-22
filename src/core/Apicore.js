@@ -272,6 +272,17 @@ export const equity = () => {
     .catch(err => console.log(err));
 };
 
+export const companies = () => {
+  return fetch(`${API}/security/companies/research`, {
+    method: 'GET',
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+
+
 export const priceList = () => {
   return fetch(`${API}/equity/priceList`, {
     method: "GET"

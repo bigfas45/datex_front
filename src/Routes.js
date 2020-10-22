@@ -13,6 +13,8 @@ import InboxRead from './user/InboxRead';
 import Security from './user/Securities';
 import SecurityPerformance from './user/SecurityPerformance';
 import Equity from './user/Equity';
+import Companies from './user/Companies';
+
 import Price from './user/PriceList';
 import PriceList from './user/PriceList';
 import EquityMonthly from './user/EquityMontly';
@@ -66,59 +68,173 @@ import PiList from './admin/PiList';
 
 const Routes = () => {
     return (
-    
-        <BrowserRouter>
-
-            <Switch>
-                 <Route path="/" exact component={Home} />
-                 <Route path="/signin" exact component={Signin} />
-                 <Route path="/signup" exact component={Signup} />
-                 <UserRoute path="/user/dashboard" exact component={Dashboard} />
-                 <UserRoute path="/user/inbox" exact component={Inbox} />
-                 <UserRoute path="/user/inboxRead/:date" exact component={InboxRead} />
-                 <UserRoute path="/user/notallowed" exact component={NotAllowed} />
-                 <UserRoute path="/user/logout" exact component={Logout} />
-                 <PrivateRoute path="/user/securities" exact component={Security} />
-                 <PrivateRoute path="/user/securities/performance" exact component={SecurityPerformance} />
-                 <PrivateRoute path="/user/equity" exact component={Equity} />
-                 <PrivateRoute path="/user/equity/pricelist" exact component={PriceList} />
-                 <PrivateRoute path="/user/equity/monthly" exact component={EquityMonthly} />
-                 <PrivateRoute path="/user/brokers" exact component={Brokers} />
-                 <PrivateRoute path="/user/brokers/trades" exact component={BrokersTraders} />
-                 <PrivateRoute path="/user/brokers/topTen" exact component={TopBrokers} />
-                 <PrivateRoute path="/user/brokers/buy" exact component={BrokersBuyTrades} />
-                 <PrivateRoute path="/user/brokers/sell" exact component={BrokersSellTrades} />
-                 <PrivateRoute path="/user/brokers/tradelog" exact component={BrokerTradeLog} />
-                 <PrivateRoute path="/user/annualreports" exact component={AnnualreportUser} />
-                 <PrivateRoute path="/user/corporate" exact component={Corporate_action} />
-                 <PrivateRoute path="/user/bonds" exact component={Bonds} />
-                 <AdminRoute path="/admin/dashboard" exact component={AdminDashboard} />
-                 <AdminRoute path="/admin/security" exact component={SecurityCreation} />
-                 <AdminRoute path="/admin/annualreport" exact component={Annualreport} />
-                 <AdminRoute path="/admin/manage/annualreport" exact component={ManageReport} />
-                 <AdminRoute path="/admin/annualreport/update/:reportId" exact component={UpdateReport} />
-                 <AdminRoute path="/admin/manage/clients" exact component={Clients} />
-                 <AdminRoute path="/admin/user/create" exact component={CreateClientUser} />
-                 <AdminRoute path="/admin/user/update/:itemId" exact component={ClientUserUpdate} />
-                 <AdminRoute path="/admin/user/mail" exact component={Mail} />
-                 <AdminRoute path="/admin/user/mail/manage" exact component={ManageMail} />
-                 <AdminRoute path="/admin/user/mail/test/:emailId" exact component={TestMail} />
-                 <AdminRoute path="/admin/user/mail/update/:emailId" exact component={UpdateMail} />
-                 <AdminRoute path="/admin/user/mail/allparticipant/:emailId" exact component={NaseNseParticipantEmail} />
-                   <AdminRoute path="/admin/user/mail/nasdparticipant/:emailId" exact component={NasdParticipantEmail} />
-                 <AdminRoute path="/admin/user/file/upload" exact component={UploadFile} />
-                 <AdminRoute path="/admin/user/eod/manage" exact component={EodFileManage} />
-                 <AdminRoute path="/admin/user/eod/upload" exact component={EodFileUpload} />
-                 <AdminRoute path="/admin/user/eod/upload/update/:eodId" exact component={EodFileUploadUpdate} />
-                 <AdminRoute path="/admin/user/price/create" exact component={SecuritiesPrice} />
-                 <AdminRoute path="/admin/user/price/list" exact component={SecurityPriceList} />
-                 <AdminRoute path="/admin/user/price/:priceId" exact component={UpdatePriceList} />
-                 <AdminRoute path="/admin/user/vwap" exact component={Vwap} />
-                 <AdminRoute path="/user/profile/:userId" exact component={Profile} />
-                 <AdminRoute path="/admin/pi" exact component={PiList} />
-
-            </Switch>
-        </BrowserRouter>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/signin" exact component={Signin} />
+          <Route path="/signup" exact component={Signup} />
+          <UserRoute path="/user/dashboard" exact component={Dashboard} />
+          <UserRoute path="/user/inbox" exact component={Inbox} />
+          <UserRoute path="/user/inboxRead/:date" exact component={InboxRead} />
+          <UserRoute path="/user/notallowed" exact component={NotAllowed} />
+          <UserRoute path="/user/logout" exact component={Logout} />
+          <PrivateRoute path="/user/securities" exact component={Security} />
+          <PrivateRoute
+            path="/user/securities/performance"
+            exact
+            component={SecurityPerformance}
+          />
+          <PrivateRoute path="/user/equity" exact component={Equity} />
+          <PrivateRoute path="/user/companies" exact component={Companies} />
+          <PrivateRoute
+            path="/user/equity/pricelist"
+            exact
+            component={PriceList}
+          />
+          <PrivateRoute
+            path="/user/equity/monthly"
+            exact
+            component={EquityMonthly}
+          />
+          <PrivateRoute path="/user/brokers" exact component={Brokers} />
+          <PrivateRoute
+            path="/user/brokers/trades"
+            exact
+            component={BrokersTraders}
+          />
+          <PrivateRoute
+            path="/user/brokers/topTen"
+            exact
+            component={TopBrokers}
+          />
+          <PrivateRoute
+            path="/user/brokers/buy"
+            exact
+            component={BrokersBuyTrades}
+          />
+          <PrivateRoute
+            path="/user/brokers/sell"
+            exact
+            component={BrokersSellTrades}
+          />
+          <PrivateRoute
+            path="/user/brokers/tradelog"
+            exact
+            component={BrokerTradeLog}
+          />
+          <PrivateRoute
+            path="/user/annualreports"
+            exact
+            component={AnnualreportUser}
+          />
+          <PrivateRoute
+            path="/user/corporate"
+            exact
+            component={Corporate_action}
+          />
+          <PrivateRoute path="/user/bonds" exact component={Bonds} />
+          <AdminRoute
+            path="/admin/dashboard"
+            exact
+            component={AdminDashboard}
+          />
+          <AdminRoute
+            path="/admin/security"
+            exact
+            component={SecurityCreation}
+          />
+          <AdminRoute
+            path="/admin/annualreport"
+            exact
+            component={Annualreport}
+          />
+          <AdminRoute
+            path="/admin/manage/annualreport"
+            exact
+            component={ManageReport}
+          />
+          <AdminRoute
+            path="/admin/annualreport/update/:reportId"
+            exact
+            component={UpdateReport}
+          />
+          <AdminRoute path="/admin/manage/clients" exact component={Clients} />
+          <AdminRoute
+            path="/admin/user/create"
+            exact
+            component={CreateClientUser}
+          />
+          <AdminRoute
+            path="/admin/user/update/:itemId"
+            exact
+            component={ClientUserUpdate}
+          />
+          <AdminRoute path="/admin/user/mail" exact component={Mail} />
+          <AdminRoute
+            path="/admin/user/mail/manage"
+            exact
+            component={ManageMail}
+          />
+          <AdminRoute
+            path="/admin/user/mail/test/:emailId"
+            exact
+            component={TestMail}
+          />
+          <AdminRoute
+            path="/admin/user/mail/update/:emailId"
+            exact
+            component={UpdateMail}
+          />
+          <AdminRoute
+            path="/admin/user/mail/allparticipant/:emailId"
+            exact
+            component={NaseNseParticipantEmail}
+          />
+          <AdminRoute
+            path="/admin/user/mail/nasdparticipant/:emailId"
+            exact
+            component={NasdParticipantEmail}
+          />
+          <AdminRoute
+            path="/admin/user/file/upload"
+            exact
+            component={UploadFile}
+          />
+          <AdminRoute
+            path="/admin/user/eod/manage"
+            exact
+            component={EodFileManage}
+          />
+          <AdminRoute
+            path="/admin/user/eod/upload"
+            exact
+            component={EodFileUpload}
+          />
+          <AdminRoute
+            path="/admin/user/eod/upload/update/:eodId"
+            exact
+            component={EodFileUploadUpdate}
+          />
+          <AdminRoute
+            path="/admin/user/price/create"
+            exact
+            component={SecuritiesPrice}
+          />
+          <AdminRoute
+            path="/admin/user/price/list"
+            exact
+            component={SecurityPriceList}
+          />
+          <AdminRoute
+            path="/admin/user/price/:priceId"
+            exact
+            component={UpdatePriceList}
+          />
+          <AdminRoute path="/admin/user/vwap" exact component={Vwap} />
+          <AdminRoute path="/user/profile/:userId" exact component={Profile} />
+          <AdminRoute path="/admin/pi" exact component={PiList} />
+        </Switch>
+      </BrowserRouter>
     );
 };
 
