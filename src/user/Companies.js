@@ -6,6 +6,7 @@ import { companies } from '../core/Apicore';
 import ReactTable from 'react-table-6';
 import 'react-table-6/react-table.css';
 import ExportToExcel from './ExportToExcelCompanies';
+import CardVolume from './CardVolume';
 
 const Home = () => {
   const [data, setData] = useState([]);

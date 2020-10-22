@@ -1,6 +1,8 @@
 import React, { Fragment, useEffect, useState, Component } from 'react';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
-import moment from 'moment';
+import CardVolume from './CardVolume';
+import CardDeals from './CardDeals';
+import CardValues from './CardValues';
 
 const ExportToExcelEquity = ({ post }) => {
   return (
@@ -16,14 +18,16 @@ const ExportToExcelEquity = ({ post }) => {
       <table hidden="true" id="table-to-xls">
         <thead>
           <tr>
-            <th>c_name</th>
-            <th>c_symbol</th>
-            <th>norminal_value</th>
-            <th>issued_share_cap</th>
-            <th>Close_Price</th>
-            <th>HighPrice</th>
-            <th>LowPrice</th>
+            <th> Name</th>
+            <th>Symbol</th>
+            <th>Norminal Value</th>
+            <th>Issued Share Cap</th>
+            <th>Close Price</th>
+            <th>High Price</th>
+            <th>Low Price</th>
             <th>Volume</th>
+            <th>Deals</th>
+            <th>Values</th>
           </tr>
         </thead>
         <tbody>
@@ -36,7 +40,16 @@ const ExportToExcelEquity = ({ post }) => {
                 <td> {r.issued_share_cap}</td>
                 <td> {r.Close_Price}</td>
                 <td> {r.HighPrice}</td>
-                <td> {r.Volume}</td>
+                <td> {r.LowPrice}</td>
+                <td>
+                  <CardVolume symbol={r.c_symbol} />
+                </td>
+                <td>
+                  <CardDeals symbol={r.c_symbol} />
+                </td>
+                <td>
+                  <CardValues symbol={r.c_symbol} />
+                </td>
               </tr>
             );
           })}

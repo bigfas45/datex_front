@@ -9,20 +9,22 @@ import { Link } from "react-router-dom";
 const Mail = () => {
 
     const [values, setValues] = useState({
-        subject: "",
-        message: "",
-        file: "",
-        loading: false,
-        error: "",
-        createdMail: "",
-        redirectToProfile: false,
-        formData: ""
-      });
+      subject: '',
+      message: '',
+      link: '',
+      file: '',
+      loading: false,
+      error: '',
+      createdMail: '',
+      redirectToProfile: false,
+      formData: '',
+    });
     
       const {
         subject,
         message,
         loading,
+        link,
         error,
         createdMail,
         redirectToProfile,
@@ -72,6 +74,7 @@ const Mail = () => {
             setValues({
               ...values,
               subject: "",
+              link: "",
               message: "",
               file: "",
               loading: false,
@@ -81,68 +84,74 @@ const Mail = () => {
         });
       };
     const newPostForm = () => (
-        <div className="row">
-          <div className="col-lg-10 mx-auto">
-            <div className="card">
-              <div className="card-body">
-                <div className="card-title">Annual Report Creation Form</div>
-                <hr />
-                <form onSubmit={clickSubmit}>
-                  <div className="form-group">
-                    <label htmlFor="input-1">File</label>
-                    <input
-                      onChange={handleChnage("file")}
-                      type="file"
-                      name="file"
-                      className="form-control"
-                      id="input-1"
-                    />
-                  </div>
-    
-                  <div className="form-group">
-                    <label htmlFor="input-1">Subject</label>
-                    <input
-                      onChange={handleChnage("subject")}
-                      type="text"
-                      className="form-control"
-                      id="input-1"
-                      placeholder="Enter Mail Subject"
-                      value={subject}
-                    />
-                  </div>
-    
-                  
-    
-                  <div className="form-group">
-                    <label htmlFor="input-1">Message</label>
-                    <textarea
-                      onChange={handleChnage("message")}
-                      type="text"
-                      className="form-control"
-                      value={message}
-                     
-                      placeholder="Enter File Name"
-                    
-                      style={{height: "200px"}}
-                    />
-                  </div>
-    
-                
-    
-                  <div className="form-group">
-                    <button
-                      type="submit"
-                      className="btn btn-primary shadow-primary px-5"
-                    >
-                      <i className="icon-lock"></i> Create Mail
-                    </button>
-                  </div>
-                </form>
-              </div>
+      <div className="row">
+        <div className="col-lg-10 mx-auto">
+          <div className="card">
+            <div className="card-body">
+              <div className="card-title">Annual Report Creation Form</div>
+              <hr />
+              <form onSubmit={clickSubmit}>
+                <div className="form-group">
+                  <label htmlFor="input-1">File</label>
+                  <input
+                    onChange={handleChnage('file')}
+                    type="file"
+                    name="file"
+                    className="form-control"
+                    id="input-1"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="input-1">Subject</label>
+                  <input
+                    onChange={handleChnage('subject')}
+                    type="text"
+                    className="form-control"
+                    id="input-1"
+                    placeholder="Enter Mail Subject"
+                    value={subject}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="input-1">Link</label>
+                  <input
+                    onChange={handleChnage('link')}
+                    type="text"
+                    className="form-control"
+                    id="input-1"
+                    placeholder="Enter IMG LINK"
+                    value={link}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="input-1">Message</label>
+                  <textarea
+                    onChange={handleChnage('message')}
+                    type="text"
+                    className="form-control"
+                    value={message}
+                    placeholder="Enter File Name"
+                    style={{ height: '200px' }}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <button
+                    type="submit"
+                    className="btn btn-primary shadow-primary px-5"
+                  >
+                    <i className="icon-lock"></i> Create Mail
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
-      );
+      </div>
+    );
     const breadcrumb = () => (
         <div className="row pt-2 pb-2">
           <div className="col-sm-9">

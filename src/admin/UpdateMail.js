@@ -11,7 +11,8 @@ const Mail = ({match}) => {
     const [values, setValues] = useState({
         subject: "",
         message: "",
-        file: "",
+      file: "",
+        link: "",
         loading: false,
         error: "",
         createdMail: "",
@@ -23,6 +24,7 @@ const Mail = ({match}) => {
         subject,
         message,
         loading,
+        link,
         error,
         createdMail,
         redirectToProfile,
@@ -40,7 +42,7 @@ const Mail = ({match}) => {
                 setValues({...values, error: data.error})
           }else{
             // populate the state
-            setValues({...values, subject: data.subject, message: data.message,  formData: new FormData()})
+            setValues({...values, subject: data.subject, link: data.link, message: data.message,  formData: new FormData()})
           
            
           }
@@ -72,6 +74,7 @@ const Mail = ({match}) => {
             setValues({
               ...values,
               subject: "",
+              link:"",
               message: "",
               file: "",
               loading: false,
@@ -82,68 +85,74 @@ const Mail = ({match}) => {
         });
       };
     const newPostForm = () => (
-        <div className="row">
-          <div className="col-lg-10 mx-auto">
-            <div className="card">
-              <div className="card-body">
-                <div className="card-title">Annual Report Creation Form</div>
-                <hr />
-                <form onSubmit={clickSubmit}>
-                  <div className="form-group">
-                    <label htmlFor="input-1">File</label>
-                    <input
-                      onChange={handleChnage("file")}
-                      type="file"
-                      name="file"
-                      className="form-control"
-                      id="input-1"
-                    />
-                  </div>
-    
-                  <div className="form-group">
-                    <label htmlFor="input-1">Subject</label>
-                    <input
-                      onChange={handleChnage("subject")}
-                      type="text"
-                      className="form-control"
-                      id="input-1"
-                      placeholder="Enter Mail Subject"
-                      value={subject}
-                    />
-                  </div>
-    
-                  
-    
-                  <div className="form-group">
-                    <label htmlFor="input-1">Message</label>
-                    <textarea
-                      onChange={handleChnage("message")}
-                      type="text"
-                      className="form-control"
-                      value={message}
-                     
-                      placeholder="Enter File Name"
-                    
-                      style={{height: "200px"}}
-                    />
-                  </div>
-    
-                
-    
-                  <div className="form-group">
-                    <button
-                      type="submit"
-                      className="btn btn-primary shadow-primary px-5"
-                    >
-                      <i className="icon-lock"></i> Update Mail
-                    </button>
-                  </div>
-                </form>
-              </div>
+      <div className="row">
+        <div className="col-lg-10 mx-auto">
+          <div className="card">
+            <div className="card-body">
+              <div className="card-title">Annual Report Creation Form</div>
+              <hr />
+              <form onSubmit={clickSubmit}>
+                <div className="form-group">
+                  <label htmlFor="input-1">File</label>
+                  <input
+                    onChange={handleChnage('file')}
+                    type="file"
+                    name="file"
+                    className="form-control"
+                    id="input-1"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="input-1">Subject</label>
+                  <input
+                    onChange={handleChnage('subject')}
+                    type="text"
+                    className="form-control"
+                    id="input-1"
+                    placeholder="Enter Mail Subject"
+                    value={subject}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="input-1">IMG Link</label>
+                  <input
+                    onChange={handleChnage('link')}
+                    type="text"
+                    className="form-control"
+                    id="input-1"
+                    placeholder="Enter Mail Subject"
+                    value={link}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="input-1">Message</label>
+                  <textarea
+                    onChange={handleChnage('message')}
+                    type="text"
+                    className="form-control"
+                    value={message}
+                    placeholder="Enter File Name"
+                    style={{ height: '200px' }}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <button
+                    type="submit"
+                    className="btn btn-primary shadow-primary px-5"
+                  >
+                    <i className="icon-lock"></i> Update Mail
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
-      );
+      </div>
+    );
     const breadcrumb = () => (
         <div className="row pt-2 pb-2">
           <div className="col-sm-9">

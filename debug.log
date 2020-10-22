@@ -208,3 +208,11 @@
 [1021/210629.022:ERROR:crash_report_database_win.cc(476)] failed to read records
 [1021/212129.241:ERROR:file_io.cc(90)] ReadExactly: expected 560, observed 0
 [1021/212129.241:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1022/094926.940:ERROR:file_io.cc(90)] ReadExactly: expected 560, observed 0
+[1022/094926.975:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1022/143820.943:ERROR:file_io.cc(90)] ReadExactly: expected 560, observed 0
+[1022/143821.049:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1022/144808.742:ERROR:file_io.cc(90)] ReadExactly: expected 560, observed 0
+[1022/144808.742:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1022/175938.939:ERROR:file_io.cc(90)] ReadExactly: expected 560, observed 0
+[1022/175938.958:ERROR:crash_report_database_win.cc(476)] failed to read records

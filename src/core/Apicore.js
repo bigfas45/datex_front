@@ -443,6 +443,18 @@ export const getOffers = (symbol) => {
 }
 
 
+export const getCompaniesVolume = (symbol) => {
+  return fetch(`${API}/security/companies/research/${symbol}`, {
+    method: 'GET',
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+
+
+
 export const getUserRead = (userId, token) => {
   return fetch (`${API}/user/${userId}`, {
       method: "GET",
