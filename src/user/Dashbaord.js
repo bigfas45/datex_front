@@ -6,6 +6,7 @@ import swal from "sweetalert";
 import { isAuthenticated } from "../auth";
 import { Live, yearTrade, MarketIndexT } from "../core/Apicore";
 import Loader from "react-loader-spinner";
+import CookieConsent from 'react-cookie-consent';
 
 const Home = ({history}) => {
   
@@ -72,7 +73,7 @@ const Home = ({history}) => {
     return (
       <Fragment>
         <Link to="#" className="back-to-top">
-          <i className="fa fa-angle-double-up"></i>{" "}
+          <i className="fa fa-angle-double-up"></i>{' '}
         </Link>
         {/* // <!--Start footer--> */}
         <footer className="footer">
@@ -81,6 +82,26 @@ const Home = ({history}) => {
               Copyright © 2020 NASD DATAPORTAL DASHBOARD
             </div>
           </div>
+          <CookieConsent
+            location="bottom"
+            buttonText="Accept"
+            cookieName="JWT_SECRET"
+            style={{ background: '#2B373B' }}
+            buttonStyle={{ color: '#4e503b', fontSize: '13px' }}
+            expires={150}
+          >
+            We use cookies to enhance your activities and preferences on our
+            website and to make your visit to the site efficient. By browsing
+            our website, you consent to our use of cookies. For more details,
+            please read our{' '}
+            <a href="https://nasdng.com/wp-content/uploads/2020/10/NASD-PRIVACY-POLICY.pdf">
+              Privacy Policy
+            </a>{' '}
+            and{' '}
+            <a href="https://nasdng.com/wp-content/uploads/2020/10/NASD-COOKIES-POLICY.pdf">
+              Cookie Policy
+            </a>
+          </CookieConsent>
         </footer>
       </Fragment>
     );
