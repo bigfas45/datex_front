@@ -1,17 +1,14 @@
-import React, { Fragment, useState, useEffect } from "react";
-import Ticker from "../core/Ticker";
-import { Link } from "react-router-dom";
-import Dashboard from "./UserDashboardLayout";
-import swal from "sweetalert";
-import { isAuthenticated } from "../auth";
-import { Live, yearTrade, MarketIndexT } from "../core/Apicore";
-import Loader from "react-loader-spinner";
+import React, { Fragment, useState, useEffect } from 'react';
+import Ticker from '../core/Ticker';
+import { Link } from 'react-router-dom';
+import Dashboard from './UserDashboardLayout';
+import swal from 'sweetalert';
+import { isAuthenticated } from '../auth';
+import { Live, yearTrade, MarketIndexT } from '../core/Apicore';
+import Loader from 'react-loader-spinner';
 import CookieConsent from 'react-cookie-consent';
 
-const Home = ({history}) => {
-  
-
-  
+const Home = ({ history }) => {
   let Tdeals = 0;
   let TvolumeTrade = 0;
   let TvalueTrade = 0;
@@ -33,7 +30,7 @@ const Home = ({history}) => {
     ddd;
 
   const loadNasdTrade = () => {
-    yearTrade().then(data => {
+    yearTrade().then((data) => {
       if (data.error) {
         setError(data.error);
       } else {
@@ -41,8 +38,8 @@ const Home = ({history}) => {
       }
     });
   };
-  const loadLiveTrades  = () => {
-    Live().then(data => {
+  const loadLiveTrades = () => {
+    Live().then((data) => {
       if (data.error) {
         setError(data.error);
       } else {
@@ -51,7 +48,7 @@ const Home = ({history}) => {
     });
   };
   const initIndexT = () => {
-    MarketIndexT().then(data => {
+    MarketIndexT().then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -67,7 +64,7 @@ const Home = ({history}) => {
   }, []);
 
   const {
-    user: { _id, name, email, role }
+    user: { _id, name, email, role },
   } = isAuthenticated();
   const footer = () => {
     return (
@@ -90,10 +87,12 @@ const Home = ({history}) => {
             buttonStyle={{ color: '#4e503b', fontSize: '13px' }}
             expires={150}
           >
-            We use cookies to enhance your activities and preferences on our
-            website and to make your visit to the site efficient. By browsing
-            our website, you consent to our use of cookies. For more details,
-            please read our{' '}
+            <p>
+              We use cookies to enhance your activities and preferences on our
+              website and to make your visit to the site efficient. By browsing
+              our website, you consent to our use of cookies. For more details,
+              please read our
+            </p>
             <a href="https://nasdng.com/wp-content/uploads/2020/10/NASD-PRIVACY-POLICY.pdf">
               Privacy Policy
             </a>{' '}
@@ -110,8 +109,8 @@ const Home = ({history}) => {
   const alert = () => {
     swal({
       title: ` Welcome back! ${name}`,
-      text: "",
-      icon: "success"
+      text: '',
+      icon: 'success',
     });
   };
 
@@ -162,20 +161,20 @@ const Home = ({history}) => {
 
                     if (percentage > 0) {
                       valueTextChange = (
-                        <span style={{ color: "#07fe00" }}>
-                          &#9650; {percentage} %{" "}
+                        <span style={{ color: '#07fe00' }}>
+                          &#9650; {percentage} %{' '}
                         </span>
                       );
                     } else if (percentage < 0) {
                       valueTextChange = (
-                        <span style={{ color: "#ff0000" }}>
-                          &#9660; {percentage} %{" "}
+                        <span style={{ color: '#ff0000' }}>
+                          &#9660; {percentage} %{' '}
                         </span>
                       );
                     } else {
                       valueTextChange = (
                         <span className="text-warning">
-                          &#8212; {percentage} %{" "}
+                          &#8212; {percentage} %{' '}
                         </span>
                       );
                     }
@@ -254,7 +253,7 @@ const Home = ({history}) => {
                     <h4 className="text-danger">
                       {TvolumeTrade
                         ? TvolumeTrade.toLocaleString(navigator.language, {
-                            minimumFractionDigits: 0
+                            minimumFractionDigits: 0,
                           })
                         : cardLoading()}
                     </h4>
@@ -273,7 +272,7 @@ const Home = ({history}) => {
                     <h4 className="text-success">
                       {TvalueTrade
                         ? TvalueTrade.toLocaleString(navigator.language, {
-                            minimumFractionDigits: 0
+                            minimumFractionDigits: 0,
                           })
                         : cardLoading()}
                     </h4>
@@ -293,7 +292,9 @@ const Home = ({history}) => {
                     return (
                       <Fragment key={i}>
                         <div className="media-body text-left">
-                          <h4 className="text-warning">{uusi ? uusi :  cardLoading()}</h4>
+                          <h4 className="text-warning">
+                            {uusi ? uusi : cardLoading()}
+                          </h4>
                           <span className="text-light">USI</span>
                         </div>
                       </Fragment>
