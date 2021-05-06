@@ -14,7 +14,7 @@
     "datatables.net": "^1.10.20",
     "datatables.net-colreorder-zf": "^1.5.2",
     "env-cmd": "^10.0.1",
-    "highcharts": "^8.0.0",
+    "highcharts": "^9.0.0",
     "highcharts-react-official": "^2.2.2",
     "jquery": "^3.5.1",
     "mdbreact": "^4.25.1",
